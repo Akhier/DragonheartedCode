@@ -26,14 +26,14 @@ This will probably be the least informative post on the whole blog, maybe barrin
 Let me lay out why I am doing this for you.
 
 &nbsp;&nbsp;&nbsp;I spent the last couple weeks trying to learn SDL2 for C++. 
-I was bashing my head against Lazy Foo's tutorials for it because the one for SDL was really good. 
-Now mind you, his tutorial isn't bad. 
+I was bashing my head against Lazy Foo's tutorials because the previous one for SDL was really good. 
+Now mind you, the SDL2 tutorial isn't bad. 
 There are people who will very much be able to learn what they need to learn from it. 
-Problem was it wasn't setup right for me. 
-I found a tutorial within the last couple days that was right for me. 
-TwinklebearDev has a tutorial for SDL2 which just fit right with what I wanted to learn. 
-I will be doing a post later about it. 
-I still have to finish some self learning and modification of the code I ended up with from it.
+Problem was it wasn't setup right for how I needed to learn. 
+Then I found a tutorial within the last couple days that was right for me. 
+TwinklebearDev has a tutorial for SDL2 which just fit right with how I wanted to learn. 
+I will be doing a post about SDL2 later as I still have something to finish. 
+There is some self learning and modification of the code I ended up with from it that I want to do first.
 
 &nbsp;&nbsp;&nbsp;What does this have to do with this blog you ask? 
 It has everything to do with it. 
