@@ -9,7 +9,7 @@ So yeah, this is my programming blog.
 &nbsp;&nbsp;&nbsp;I have been approaching the end of my college course for a while now. 
 There is one thing I have been seeing and been told on numerous programming blogs, podcasts, and such. 
 It is that the type of job I want will be a lot easier to get if I have a couple of specific things. 
-First is of course a backlog of projects, preferably on Github, as well as with contributions to opensource projects. 
+First is of course a backlog of projects, preferably on [Github](github.com "One of the more popular ways to source control opensource programming projects"), as well as with contributions to opensource projects. 
 That is being worked on and not entirely unrelated to this blog, but then we get to the second thing. 
 That is have a blog about what you do. 
 It doesn't have to be popular, it just have to exist and be updated semi-regularly. 
@@ -26,12 +26,12 @@ This will probably be the least informative post on the whole blog, maybe barrin
 Let me lay out why I am doing this for you.
 
 &nbsp;&nbsp;&nbsp;I spent the last couple weeks trying to learn SDL2 for C++. 
-I was bashing my head against Lazy Foo's tutorials because the previous one for SDL was really good. 
+I was bashing my head against [Lazy Foo's tutorials](http://lazyfoo.net/tutorials/SDL/index.php "I do advise you take a look if you want to learn SDL") because the previous one for SDL was really good. 
 Now mind you, the SDL2 tutorial isn't bad. 
 There are people who will very much be able to learn what they need to learn from it. 
 Problem was it wasn't setup right for how I needed to learn. 
 Then I found a tutorial within the last couple days that was right for me. 
-TwinklebearDev has a tutorial for SDL2 which just fit right with how I wanted to learn. 
+[TwinklebearDev](http://www.willusher.io/pages/sdl2/ "A good tutorial for SDL2 to take a look at") has a tutorial for SDL2 which just fit right with how I wanted to learn. 
 I will be doing a post about SDL2 later as I still have something to finish. 
 There is some self learning and modification of the code I ended up with from it that I want to do first.
 
