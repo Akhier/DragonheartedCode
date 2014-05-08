@@ -7,10 +7,13 @@ I could probably pick it back up but if I did then I would like to refocus it on
 So yeah, this is my programming blog.
 
 &nbsp;&nbsp;&nbsp;I have been approaching the end of my college course for a while now. 
-If there is one thing I have been seeing and been told on numerous programming blogs, podcasts, and such it is that the type of job I want will be a lot easier to get if I have two things. 
+There is one thing I have been seeing and been told on numerous programming blogs, podcasts, and such. 
+It is that the type of job I want will be a lot easier to get if I have a couple of specific things. 
 First is of course a backlog of projects, preferably on Github, as well as with contributions to opensource projects. 
 That is being worked on and not entirely unrelated to this blog, but then we get to the second thing. 
-Thats have a blog about what you do. It doesn't have to be popular, it just have to exist and be updated semi-regularly. Having one shows that not only do you know what your blogging about but it shows you are into to it. 
+That is have a blog about what you do. 
+It doesn't have to be popular, it just have to exist and be updated semi-regularly. 
+Having one shows that not only do you know what your blogging about but it shows you are into to it. 
 Have you yet to read a blog where the person *hated* what they where talking about? 
 I am willing to bet that even if you did it was very obvious. 
 This is my blog to show that I love what I do and want to share it with you.
