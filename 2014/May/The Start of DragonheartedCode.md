@@ -20,9 +20,9 @@ This is my blog to show that I love what I do and want to share it with you.
 
 ###Of course that is very selfish
 &nbsp;&nbsp;&nbsp;That isn't the point of this blog though. 
-While I would like to use this to leverage my self into a good job thats not why I am doing the blog. 
-I had a blog about all these different things I was interested in even before I knew about this. 
-This will probably be the least informative post on the blog barring my deciding to post something stupid for April fools day or something. 
+While I would like to use this to leverage myself into a good job that is not why I am doing this blog. 
+I had a blog about all these different things I was interested in even before all that. 
+This will probably be the least informative post on the whole blog, maybe barring my deciding to post something stupid for April fools day. 
 Let me lay out why I am doing this for you.
 
 &nbsp;&nbsp;&nbsp;I spent the last couple weeks trying to learn SDL2 for C++. 
