@@ -43,4 +43,4 @@ The host of Giant Robots Crashing into other Giant Robots encourages people to s
 The reason for this is that while you know it now since you have learned it the you from a week ago would have loved to know what you understand now. 
 This blog is for you out there who don't know yet.
 
-######Here is to learning because the moment I stop learning is the moment I am dead.
+####Here is to learning because the moment I stop learning is the moment I am dead.
