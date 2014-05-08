@@ -35,12 +35,12 @@ TwinklebearDev has a tutorial for SDL2 which just fit right with how I wanted to
 I will be doing a post about SDL2 later as I still have something to finish. 
 There is some self learning and modification of the code I ended up with from it that I want to do first.
 
-&nbsp;&nbsp;&nbsp;What does this have to do with this blog you ask? 
-It has everything to do with it. 
-I want to give back what I have gotten and more so. 
-A really good way to look at it I heard from a podcast I have been listening too recently. 
-The podcast Giant Robots Crashing into other Giant Robots encourages people to start their own blog about what they do even if it is stupidly simple. 
-The reason for this is that while you know it now that you have learned it the you a week ago would have loved to know what you know now. 
+&nbsp;&nbsp;&nbsp;Now what does this have to do with this blog you ask? 
+Basically I want to give back what I have gotten and more so. 
+Someone out there is learning SDL2 and what I found would help them. 
+I heard A really good way to look at it from a podcast I have been listening too recently. 
+The host of Giant Robots Crashing into other Giant Robots encourages people to start their own blog about what they do. 
+The reason for this is that while you know it now since you have learned it the you from a week ago would have loved to know what you understand now. 
 This blog is for you out there who don't know yet.
 
 Here is to learning because the moment I stop learning is the moment I am dead.
