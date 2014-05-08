@@ -39,7 +39,7 @@ There is some self learning and modification of the code I ended up with from it
 Basically I want to give back what I have gotten and more so. 
 Someone out there is learning SDL2 and what I found would help them. 
 I heard A really good way to look at it from a podcast I have been listening too recently. 
-The host of Giant Robots Crashing into other Giant Robots encourages people to start their own blog about what they do. 
+The host of [Giant Robots Crashing into other Giant Robots](http://robots.thoughtbot.com/ "Really good podcast for a programmer to listen to") encourages people to start their own blog about what they do. 
 The reason for this is that while you know it now since you have learned it the you from a week ago would have loved to know what you understand now. 
 This blog is for you out there who don't know yet.
 
