@@ -1,8 +1,8 @@
 ###I have failed at blogging
-&nbsp;&nbsp;&nbsp;Now the blog itself wasn't *really* a failure. [ASCII, Dice, and Why](asciidice.blogspot.com "A dead blog that yet may live when the stars align") was a good blog and has a number of interesting posts on it.
-The problem was it had three different audiences.
-It was about roguelikes, programming, and roleplaying which wasn't even the modern style but the old school.
-Roguelikes and programming had overlap as I am working on programming a roguelike but the last doesn't fit that well.
+&nbsp;&nbsp;&nbsp;Now the blog itself wasn't *really* a failure. [ASCII, Dice, and Why](asciidice.blogspot.com "A dead blog that yet may live when the stars align") was a good blog and has a number of interesting posts on it. 
+The problem was it had three different audiences. 
+It was about roguelikes, programming, and roleplaying which wasn't even the modern style but the old school. 
+Roguelikes and programming had overlap as I am working on programming a roguelike but the last doesn't fit that well. 
 I could probably pick it back up but if I did then I would like to refocus it on roleplaying.
 So yeah, this is my programming blog.
 
