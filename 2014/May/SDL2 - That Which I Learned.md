@@ -1,6 +1,6 @@
 ###Let us wrap my crash course in SDL2 up together 
 &nbsp;&nbsp;&nbsp;By which I mean to say lets go through the steps of creating a simple wrapper for SDL2. 
-I will be using C++11, SDL2.0.3, SDL2_image, SDL2_ttf, and the IDE CodeBlocks on a Windows 7 to do so. 
+I will be using C++11, SDL2.0.3, SDL2_image, SDL2_ttf, and the IDE CodeBlocks with MinGW on a Windows 7 to do so. 
 There are a couple important bits so lets document them here and now so we don't end up over complicating things later. 
 * Most important is that Nothing public should take nor return anything specifically SDL 
 * Display a window (just a window, later I can add the support for multiple windows but we don't need that now) 
@@ -27,16 +27,30 @@ I will be calling mine DragonWrapper_SDL2 because it stands out and gives me a n
 You will note that I am creating it at C:\Programming\ on my computer. 
 I advise if your at all serious about programming on the computer your at have such a folder as it makes organization so much easier and some things are picky about placement. 
 You might even want to consider breaking it down even further in that folder if you program in multiple languages by having for instance a C++ folder. 
+
 ![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](@002 "The bit about C:\Programming\ is useful but not a required thing") 
-Now a bit which really isn't important. 
+
+&nbsp;&nbsp;&nbsp;Now a bit which really isn't important. 
 Basically if you can't tell what is different here I have the debug and release output set to the base directory rather then having seperate folders for them. 
 I generally do this just to make placement of dll's easier on me. 
 While you don't have to do this if you don't later on when I put the various things in the base folder you might have to place them elsewhere. 
+
 ![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](@003 "Just something I started doing so I had less folders to go through") 
-Now we need to grab all the SDL2 bits we want for this project. 
+
+&nbsp;&nbsp;&nbsp;Now we need to grab all the SDL2 bits we want for this project. 
 First off is [from here](http://www.libsdl.org/download-2.0.php "This is to the SDL2 download page") get the mingw dev version of SDL2. 
 Next is the mingw dev version of SDL2_image [found here](http://www.libsdl.org/projects/SDL_image/ "This is to the SDL2_image download page"). 
 Finally we will want SDL2_ttf [thats here](http://www.libsdl.org/projects/SDL_ttf/ "This is to the SDL2_ttf download page") and once again get the mingw dev version. 
 Now with all those files unzip them with something like [7zip](http://www.7-zip.org/ "The program I use for unzipping stuff"). 
 Then do it again with what came out and you should have ended up with the following mess: 
+
 ![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](@004 "The numbers may vary if versions have changed. If they did I can't guarantee anything.") 
+
+&nbsp;&nbsp;&nbsp;Now that we have that all there is a decision to make. 
+More to the point I have already made the decision but you should know that I did. 
+Basically do we want to use 32 or 64 bit versions. 
+Now if you are on a 32bit computer the decision is already made for you. 
+My decision was made because I even had to state that.
+I have slight tendancies to want to actually destribute my code to the world at large so if I even have to consider a programmer using a 32bit computer I better go with that.
+
+&nbsp;&nbsp;&nbsp;Now that is out of the way lets make our lives easier.
