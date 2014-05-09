@@ -16,3 +16,9 @@ Mostly I am just paranoid here but since this is a learning experiance its okay 
 The stuff in the middle is easy to understand so I don't have to say much about it.
 Though I will note that Display text is its own bullet point because of it is separate from images.
 In this whole list the only one that might cause problems is the last one as I haven't actually done that yet though I have an idea how I will.
+
+###Actually getting started
+&nbsp;&nbsp;&nbsp;I have a project already setup for making a SDL2 project in my programming folder.
+Having said that I won't be using it as I want to take us through all the steps as just like with a story the best place to start is the beggining.
+Anyway to start just open CodeBlocks and create a new project that is a Empty Project:
+![While I did have a picture here it apperently failed. Inform me and I will try to fix it](@ "You should be able to do this even without this picture")
