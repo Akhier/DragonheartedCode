@@ -28,3 +28,8 @@ You will note that I am creating it at C:\Programming\ on my computer.
 I advise if your at all serious about programming on the computer your at have such a folder as it makes organization so much easier and some things are picky about placement.
 You might even want to consider breaking it down even further in that folder if you program in multiple languages by having for instance a C++ folder.
 ![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](@002 "The bit about C:\Programming\ is useful but not a required thing")
+Now a bit which really isn't important.
+Basically if you can't tell what is different here I have the debug and release output set to the base directory rather then having seperate folders for them.
+I generally do this just to make placement of dll's easier on me.
+While you don't have to do this if you don't later on when I put the various things in the base folder you might have to place them elsewhere.
+![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](@003 "Just something I started doing so I had less folders to go through")
