@@ -114,3 +114,10 @@ In this case our needs are as follows so just select them and copy them into the
 * zlib.dll
 
 ###Start of Actual Code
+&nbsp;&nbsp;&nbsp;Now lets get some actual code on a page. 
+Well actually, lets get an actual page on the project though that is easy enough to do. 
+Just add a new class file, I will be calling mine DrW_SDL2. 
+Mostly because the Dr makes you think Doctor W which is cool, that and the three letters are relatively unique to help with autocomplete. 
+
+![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](@010 "I don't know if this is all default so I included this image." 
+
