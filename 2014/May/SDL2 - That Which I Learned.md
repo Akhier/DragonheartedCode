@@ -105,8 +105,10 @@ In this case our needs are as follows so just select them and copy them into the
 * SDL2_image.dll
 * SDL2_ttf.dll
 * libfreetype-6.dll
+
   This one is for doing text
 * libpng16-16.dll
+
   This is because I am going to use png images. 
   If you are using jpegs for instance you would want libjpeg-9.dll
 * zlib.dll
