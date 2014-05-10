@@ -87,3 +87,10 @@ Here we will be doing a similar thing but instead of include\SDL2 you just want 
 
 ![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](@008 "Same song different tune")
 
+Finally (for this bit) head back on over to Compiler settings tab and change over to Debug. 
+It will ask if you want to save what you have done when you do the change (I highly advise you do save your work). 
+Now for a little quality of life. 
+In the options enable Enable all compiler warnings and Enable extra compiler warnings. 
+CodeBlocks by default has a very low level of warnings and you really want those warnings because they are a thing. 
+
+![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](@009 "You might even considerer making them the default or something")
