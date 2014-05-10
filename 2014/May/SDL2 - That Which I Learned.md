@@ -53,4 +53,10 @@ Now if you are on a 32bit computer the decision is already made for you.
 My decision was made because I even had to state that.
 I have slight tendancies to want to actually destribute my code to the world at large so if I even have to consider a programmer using a 32bit computer I better go with that.
 
-&nbsp;&nbsp;&nbsp;Now that is out of the way lets make our lives easier.
+&nbsp;&nbsp;&nbsp;Now that is out of the way lets make our lives easier. 
+We could leave everything where it is but lets not. 
+In each of the folders is a folder called i686-w64-mingw32. 
+Then in that folder is three folders (bin, include, and lib) and these are the important ones. 
+Throw them all into one folder (I called mine "SDL2 32" cause it is SDL2 and 32bit). 
+This will let you just link to one include and one lib folder. 
+Also all the dll's you need will be in one bin folder which is nice. 
