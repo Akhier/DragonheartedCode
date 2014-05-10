@@ -99,8 +99,14 @@ CodeBlocks by default has a very low level of warnings and you really want those
 &nbsp;&nbsp;&nbsp;Now to wrap up setup as a whole lets grab the dlls we want. 
 For this just head to where ever you stored all the stuff and crack open the bin. 
 As I mentioned above all the dlls for SDL2 are contained here, or atleast for our needs. 
-In this case our needs are as follows: 
+In this case our needs are as follows so just select them and copy them into the project folder. 
+
 * SDL2.dll
 * SDL2_image.dll
 * SDL2_ttf.dll
-* 
+* libfreetype-6.dll
+  This one is for doing text
+* libpng16-16.dll
+  This is because I am going to use png images. 
+  If you are using jpegs for instance you would want libjpeg-9.dll
+* zlib.dll
