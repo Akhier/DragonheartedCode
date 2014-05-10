@@ -10,6 +10,7 @@ There are a couple important bits so lets document them here and now so we don't
 * Display text 
 * Change the font and size of displayed text 
 * Handle input for mouse and keyboard 
+
 The first one is so any code I write with this isn't chained to SDL2. 
 I could go and write a wrapper for another similar thing and use it in place of this. 
 Mostly I am just paranoid here but since this is a learning experiance its okay as its showing how you can make code safe from changes in a library you use. 
