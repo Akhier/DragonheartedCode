@@ -1,4 +1,4 @@
-###Let us wrap my crash course in SDL2 up together 
+##Lets wrap my crash course in SDL2 up 
 &nbsp;&nbsp;&nbsp;By which I mean to say lets go through the steps of creating a simple wrapper for SDL2. 
 I will be using C++11, SDL2.0.3, SDL2_image, SDL2_ttf, and the IDE CodeBlocks with MinGW on a Windows 7 to do so. 
 There are a couple important bits so lets document them here and now so we don't end up over complicating things later. 
@@ -22,21 +22,21 @@ In this whole list the only one that might cause problems is the last one as I h
 &nbsp;&nbsp;&nbsp;I have a project already setup for making a SDL2 project in my programming folder. 
 Having said that I won't be using it as I want to take us through all the steps as just like with a story the best place to start is the beggining. 
 Anyway to start just open CodeBlocks and create a new project that is a Empty Project: 
-![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](@001 "You should be able to do this even without this picture") 
+![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/Blog%20Images/SDL2%20-%20That%20Which%20I%20Learned/001.png "You should be able to do this even without this picture") 
 Next name it what you will. 
 I will be calling mine DragonWrapper_SDL2 because it stands out and gives me a naming convention for future wrappers. 
 You will note that I am creating it at C:\Programming\ on my computer. 
 I advise if your at all serious about programming on the computer your at have such a folder as it makes organization so much easier and some things are picky about placement. 
 You might even want to consider breaking it down even further in that folder if you program in multiple languages by having for instance a C++ folder. 
 
-![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](@002 "The bit about C:\Programming\ is useful but not a required thing") 
+![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/Blog%20Images/SDL2%20-%20That%20Which%20I%20Learned/002.png "The bit about C:\Programming\ is useful but not a required thing") 
 
 &nbsp;&nbsp;&nbsp;Now a bit which really isn't important. 
 Basically if you can't tell what is different here I have the debug and release output set to the base directory rather then having seperate folders for them. 
 I generally do this just to make placement of dll's easier on me. 
 While you don't have to do this if you don't later on when I put the various things in the base folder you might have to place them elsewhere. 
 
-![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](@003 "Just something I started doing so I had less folders to go through") 
+![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/Blog%20Images/SDL2%20-%20That%20Which%20I%20Learned/003.png "Just something I started doing so I had less folders to go through") 
 
 &nbsp;&nbsp;&nbsp;Now we need to grab all the SDL2 bits we want for this project. 
 First off is [from here](http://www.libsdl.org/download-2.0.php "This is to the SDL2 download page") get the mingw dev version of SDL2. 
@@ -45,7 +45,7 @@ Finally we will want SDL2_ttf [thats here](http://www.libsdl.org/projects/SDL_tt
 Now with all those files unzip them with something like [7zip](http://www.7-zip.org/ "The program I use for unzipping stuff"). 
 Then do it again with what came out and you should have ended up with the following mess: 
 
-![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](@004 "The numbers may vary if versions have changed. If they did I can't guarantee anything.") 
+![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/Blog%20Images/SDL2%20-%20That%20Which%20I%20Learned/004.png "The numbers may vary if versions have changed. If they did I can't guarantee anything.") 
 
 &nbsp;&nbsp;&nbsp;Now that we have that all there is a decision to make. 
 More to the point I have already made the decision but you should know that I did. 
@@ -67,13 +67,13 @@ Right click the project and select build options.
 From there select the top level so we can affect both Debug and Release builds. 
 As I am using some random things from C++11 which I am not sure of lets just check that off 
 
-![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](@005 "I don't really have anything interesting to say about this")
+![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/Blog%20Images/SDL2%20-%20That%20Which%20I%20Learned/005.png "I don't really have anything interesting to say about this")
 
 &nbsp;&nbsp;&nbsp;Okay now lets select the Linker settings tab and add a few things to the "Other linker options" box. 
 We want to put -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -static-libgcc -static-libstdc++ in there so when we use the stuff it is available. 
 The window should now look like this (I put a line break in there so you can see it all, it doesn't do anything): 
 
-![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](@006 "You could even put a line break after each item but meh") 
+![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/Blog%20Images/SDL2%20-%20That%20Which%20I%20Learned/006.png "You could even put a line break after each item but meh") 
 
 &nbsp;&nbsp;&nbsp;Now select the Search directories tab it will be by default on the sub tab called Compiler. 
 Click add and browse to wherever you stored your SDL2 stuff. 
@@ -81,12 +81,12 @@ In the include folder there is a SDL2 folder and that is what you want.
 It will ask whether you want to keep it a relative path. 
 I generally go with saying no to that and you will see I did so though the choice is up to you. 
 
-![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](@007 "I reopened the browse to show that as well")
+![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/Blog%20Images/SDL2%20-%20That%20Which%20I%20Learned/007.png "I reopened the browse to show that as well")
 
 &nbsp;&nbsp;&nbsp;Now lets head onto the next sub tab which is called Linker. 
 Here we will be doing a similar thing but instead of include\SDL2 you just want the lib folder. 
 
-![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](@008 "Same song different tune")
+![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/Blog%20Images/SDL2%20-%20That%20Which%20I%20Learned/008.png "Same song different tune")
 
 &nbsp;&nbsp;&nbsp;Finally (for this bit) head back on over to Compiler settings tab and change over to Debug. 
 It will ask if you want to save what you have done when you do the change (I highly advise you do save your work). 
@@ -94,7 +94,7 @@ Now for a little quality of life.
 In the options enable Enable all compiler warnings and Enable extra compiler warnings. 
 CodeBlocks by default has a very low level of warnings and you really want those warnings because they are a thing. 
 
-![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](@009 "You might even considerer making them the default or something")
+![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/Blog%20Images/SDL2%20-%20That%20Which%20I%20Learned/009.png "You might even considerer making them the default or something")
 
 &nbsp;&nbsp;&nbsp;Now to wrap up setup as a whole lets grab the dlls we want. 
 For this just head to where ever you stored all the stuff and crack open the bin. 
@@ -112,3 +112,5 @@ In this case our needs are as follows so just select them and copy them into the
   This is because I am going to use png images. 
   If you are using jpegs for instance you would want libjpeg-9.dll
 * zlib.dll
+
+###Start of Actual Code
