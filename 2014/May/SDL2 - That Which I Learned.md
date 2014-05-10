@@ -135,3 +135,21 @@ Now when you build the release you will get a .dll file.
 
 ![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](@011 "You probably where able to do this but images are fun I guess.")
 
+&nbsp;&nbsp;&nbsp;With this I can say we are trully done with setup but there is one thing to bring up. 
+Basically all of my code for this and even this post itself will be on [Github](https://github.com/ "Where I go storing the code I don't mind people seeing"). 
+I use Git for source control even when I am not publishing it to Github. 
+So with that said at this point is where I did the first commit at this point and you can see [the code here](https://github.com/Akhier/DragonWrapper_SDL2 "I guess you could have technically just read to here and get the code but you wont learn anything that way"). 
+Also of interest as I mentioned I have my blog posts up there so you can [see them here](https://github.com/Akhier/DragonheartedCode "Also see what editing I did to a blog post before it goes up and maybe fix my past posts and submit your own pull request") and even see what is in the workings. 
+So with that all out of the way time to put code on the page. 
+
+&nbsp;&nbsp;&nbsp;Now there are many ways to start on a project but for this there are a few things I think are important to get out of the way. 
+The very first of which is putting all the includes into the .h file. 
+As just a quick run down of what I will start with (I might add more later but this is what I know of now). 
+Also note I am just putting what goes in the angle brackets below so the full form is #include <[whats below]> 
+
+* SDL.h
+* SDL_image.h
+* SDL_ttf.h
+* iostream
+* vector
+* map
