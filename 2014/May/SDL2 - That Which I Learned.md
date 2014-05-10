@@ -60,3 +60,25 @@ Then in that folder is three folders (bin, include, and lib) and these are the i
 Throw them all into one folder (I called mine "SDL2 32" cause it is SDL2 and 32bit). 
 This will let you just link to one include and one lib folder. 
 Also all the dll's you need will be in one bin folder which is nice. 
+
+&nbsp;&nbsp;&nbsp;Now that we did that lets hook them up to the project. 
+Right click the project and select build options. 
+From there select the top level so we can affect both Debug and Release builds. 
+As I am using some random things from C++11 which I am not sure of lets just check that off 
+
+![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](@005 "I don't really have anything interesting to say about this")
+
+Okay now lets select the Linker settings tab and add a few things to the "Other linker options" box. 
+We want to put -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf in there so when we use the stuff it is available. 
+The window should now look like this (I put a line break in there so you can see it all, it doesn't do anything): 
+
+![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](@006 "You could even put a line break after each item but meh") 
+
+Now select the Search directories tab it will be by default on the sub tab called Compiler. 
+Click add and browse to wherever you stored your SDL2 stuff. 
+In the include folder there is a SDL2 folder and that is what you want. 
+It will ask whether you want to keep it a relative path. 
+I generally go with saying no to that and you will see I did so though the choice is up to you. 
+
+![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](@007 "I reopened the browse to show that as well")
+
