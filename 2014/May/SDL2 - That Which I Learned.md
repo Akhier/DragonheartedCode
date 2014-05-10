@@ -82,3 +82,8 @@ I generally go with saying no to that and you will see I did so though the choic
 
 ![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](@007 "I reopened the browse to show that as well")
 
+Now lets head onto the next sub tab which is called Linker. 
+Here we will be doing a similar thing but instead of include\SDL2 you just want the lib folder. 
+
+![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](@008 "Same song different tune")
+
