@@ -166,3 +166,12 @@ SDL_Font* _font;
 std::vector<SDL_Texture*> _textures;
 ```
 
+&nbsp;&nbsp;&nbsp;You will note that I have a bit of a naming convention for private names. 
+Mainly I start them with a underscore '_' and I use it on all private names and they tend to be all lowercase. 
+This is just personal choice so do as you will but I like be able to tell at glance that something is private. 
+With this let me explain the one interesting bit here which is the vector. 
+The wrapper needs to be able to hold many textures to be useful and a vector is the simplest and without getting to far into it the most effeciant way for me to store them all. 
+It also lets me refer to all textures by the int for where they are in the vector. 
+Mind you this is only possible if you don't remove from the vector but I don't intend to. 
+The other thing I considered was using a map so I could for instance use a string as the key. 
+In the end though I found that a vector was the easiest way to make sure I had as much space as I needed. 
