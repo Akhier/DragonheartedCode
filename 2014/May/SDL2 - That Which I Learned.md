@@ -22,8 +22,10 @@ In this whole list the only one that might cause problems is the last one as I h
 &nbsp;&nbsp;&nbsp;I have a project already setup for making a SDL2 project in my programming folder. 
 Having said that I won't be using it as I want to take us through all the steps as just like with a story the best place to start is the beggining. 
 Anyway to start just open CodeBlocks and create a new project that is a Empty Project: 
+
 ![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/Blog%20Images/SDL2%20-%20That%20Which%20I%20Learned/001.png "You should be able to do this even without this picture") 
-Next name it what you will. 
+
+&nbsp;&nbsp;&nbsp;Next name it what you will. 
 I will be calling mine DragonWrapper_SDL2 because it stands out and gives me a naming convention for future wrappers. 
 You will note that I am creating it at C:\Programming\ on my computer. 
 I advise if your at all serious about programming on the computer your at have such a folder as it makes organization so much easier and some things are picky about placement. 
@@ -120,4 +122,16 @@ Just add a new class file, I will be calling mine DrW_SDL2.
 Mostly because the Dr makes you think Doctor W which is cool, that and the three letters are relatively unique to help with autocomplete. 
 
 ![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](@010 "I don't know if this is all default so I included this image." 
+
+&nbsp;&nbsp;&nbsp;Now you have two files. 
+[name].cpp and [name].h which is fine but since I aim to have a library at the end of this so lets make one more file. 
+I just called it libtest.cpp as that is exactly what it will do. 
+With that though I must admit I lied about being done with setup. 
+Go back to Project and select properties. 
+Now select the build target tab and then select the release. 
+You will note the Type is set to something like Console application. 
+Change that to Dynamic library and then in the Build target files uncheck the libtest file. 
+Now when you build the release you will get a .dll file. 
+
+![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](@011 "You probably where able to do this but images are fun I guess.")
 
