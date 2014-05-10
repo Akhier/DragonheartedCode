@@ -153,3 +153,16 @@ Also note I am just putting what goes in the angle brackets below so the full fo
 * iostream
 * vector
 * map
+
+&nbsp;&nbsp;&nbsp;With that in time for some private variables and such. 
+This will be somewhat forward looking as I am including some stuff before it is needed but they where easy to see. 
+Anyway we want SDL_Window, a SDL_Render for it, the TTF_Font, and a vector of SDL_Texture. 
+A thing to note about these is that we need to use pointers for this. 
+
+```C++
+SDL_Window* _window;
+SDL_Renderer* _renderer;
+SDL_Font* _font;
+std::vector<SDL_Texture*> _textures;
+```
+
