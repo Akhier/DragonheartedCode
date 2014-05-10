@@ -68,13 +68,13 @@ As I am using some random things from C++11 which I am not sure of lets just che
 
 ![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](@005 "I don't really have anything interesting to say about this")
 
-Okay now lets select the Linker settings tab and add a few things to the "Other linker options" box. 
+&nbsp;&nbsp;&nbsp;Okay now lets select the Linker settings tab and add a few things to the "Other linker options" box. 
 We want to put -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf in there so when we use the stuff it is available. 
 The window should now look like this (I put a line break in there so you can see it all, it doesn't do anything): 
 
 ![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](@006 "You could even put a line break after each item but meh") 
 
-Now select the Search directories tab it will be by default on the sub tab called Compiler. 
+&nbsp;&nbsp;&nbsp;Now select the Search directories tab it will be by default on the sub tab called Compiler. 
 Click add and browse to wherever you stored your SDL2 stuff. 
 In the include folder there is a SDL2 folder and that is what you want. 
 It will ask whether you want to keep it a relative path. 
@@ -82,12 +82,12 @@ I generally go with saying no to that and you will see I did so though the choic
 
 ![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](@007 "I reopened the browse to show that as well")
 
-Now lets head onto the next sub tab which is called Linker. 
+&nbsp;&nbsp;&nbsp;Now lets head onto the next sub tab which is called Linker. 
 Here we will be doing a similar thing but instead of include\SDL2 you just want the lib folder. 
 
 ![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](@008 "Same song different tune")
 
-Finally (for this bit) head back on over to Compiler settings tab and change over to Debug. 
+&nbsp;&nbsp;&nbsp;Finally (for this bit) head back on over to Compiler settings tab and change over to Debug. 
 It will ask if you want to save what you have done when you do the change (I highly advise you do save your work). 
 Now for a little quality of life. 
 In the options enable Enable all compiler warnings and Enable extra compiler warnings. 
