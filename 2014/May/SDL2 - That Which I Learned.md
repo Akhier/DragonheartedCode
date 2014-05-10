@@ -11,7 +11,7 @@ There are a couple important bits so lets document them here and now so we don't
 * Change the font and size of displayed text 
 * Handle input for mouse and keyboard 
 
-The first one is so any code I write with this isn't chained to SDL2. 
+&nbsp;&nbsp;&nbsp;The first one is so any code I write with this isn't chained to SDL2. 
 I could go and write a wrapper for another similar thing and use it in place of this. 
 Mostly I am just paranoid here but since this is a learning experiance its okay as its showing how you can make code safe from changes in a library you use. 
 The stuff in the middle is easy to understand so I don't have to say much about it. 
@@ -70,7 +70,7 @@ As I am using some random things from C++11 which I am not sure of lets just che
 ![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](@005 "I don't really have anything interesting to say about this")
 
 &nbsp;&nbsp;&nbsp;Okay now lets select the Linker settings tab and add a few things to the "Other linker options" box. 
-We want to put -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf in there so when we use the stuff it is available. 
+We want to put -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -static-libgcc -static-libstdc++ in there so when we use the stuff it is available. 
 The window should now look like this (I put a line break in there so you can see it all, it doesn't do anything): 
 
 ![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](@006 "You could even put a line break after each item but meh") 
@@ -95,3 +95,12 @@ In the options enable Enable all compiler warnings and Enable extra compiler war
 CodeBlocks by default has a very low level of warnings and you really want those warnings because they are a thing. 
 
 ![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](@009 "You might even considerer making them the default or something")
+
+&nbsp;&nbsp;&nbsp;Now to wrap up setup as a whole lets grab the dlls we want. 
+For this just head to where ever you stored all the stuff and crack open the bin. 
+As I mentioned above all the dlls for SDL2 are contained here, or atleast for our needs. 
+In this case our needs are as follows: 
+* SDL2.dll
+* SDL2_image.dll
+* SDL2_ttf.dll
+* 
