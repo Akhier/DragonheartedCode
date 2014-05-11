@@ -252,4 +252,59 @@ SDL_Texture* DrW_SDL2::_rendertextastexture(const std::string &message){
 &nbsp;&nbsp;&nbsp;I will note at this point that I am not really handling the errors so much as just noting when they happen. 
 Later I might come back and replace cout with writting the errors to a txt file but as it is I would really call it production ready but it is good enough for this. 
 Also note that for the text I am using Blended mode. 
-That would be the fancy way of doing it and depending on how it performs I may add in the ability to choose Shaded or even Solid as needed. 
+That would be the fancy way rendering text and depending on how it performs I may add in the ability to choose Shaded or even Solid as needed. 
+Anyway with this we have almost finished all the private functions. 
+I just want to add one more thing which is going to be a map. 
+The maps job will be to store a vector of rectangles in relation to an int. 
+
+```C++
+std::map<int, std::vector<SDL_Rect>> _tilesetdefinition;
+```
+
+&nbsp;&nbsp;&nbsp;And that will as the name suggests store the tileset defintions. 
+Basically the SDL_Rect is just an x, y, width, and height which we will use to store where a specific tile is on a texture at [int] location. 
+Now I know I have been doing a lot of setup here with this code but that is because I know what I want it to do. 
+With this out of the way though I will be stepping into more fluid teritory. 
+The first step though is simple enough, lets write something to create a window. 
+
+```C++
+void createWindow(const std::string &windowtitle, int x, int y, int width, int height, bool resizable);
+```
+
+&nbsp;&nbsp;&nbsp;This could be enough but I want to change one thing and see if it works. 
+While it is nice to specify exactly the x and y of your window SDL but sometimes you just want it to open wherever. 
+Since I don't really ever plan to have an x and y less then 0 we will set a default of -1 to both. 
+
+```C+
+void createWindow(const std::string &windowtitle, int x = -1, int y = -1, int width, int height, bool resizable);
+```
+
+&nbsp;&nbsp;&nbsp;Now lets write the actual code which I will be doing something slightly tricky with. 
+Seeing as it is something a little beyond the basics I will explain it first. 
+Basically I am going to use an inline if in it the code. 
+What happens is exactly the same as a normal if but as noted inline. 
+The way it works is [argument]?[true]:[false] so you could say x = (a > b)?y:z. 
+If a is greater than b then x is equal to y else it is equal to z. 
+Anyway here is the code for creating a window. 
+
+```C++
+void DrW_SDL2::createWindow(const std::string windowtitle, int x = -1, int y = -1, int width, int height, bool resizable);{
+    _window = SDL_CreateWindow(windowtitle.c_str(), x >= 0 ? x : SDL_WINDOWPOS_UNDEFINED, y >= 0 ? y : SDL_WINDOWPOS_UNDEFINED, width, height, resizable ? SDL_WINDOW_RESIZABLE : (SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE));
+    if (_window == nullptr){
+        _logerror("SDL_CreateWindow");
+    }
+    _renderer = SDL_CreateRenderer(_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    if (_renderer == nullptr){
+        _logerror("SDL_CreateRenderer");
+    }
+}
+```
+
+&nbsp;&nbsp;&nbsp;You will note I used the inline if three times and to be honest I didn't need to. 
+It is mostly just my own esthetics when it comes to coding. 
+I could have created ```int X = x;``` and then wrote ```if(x < 0) {X = SDL_WINDOWPOS_UNDEFINED;}``` and done the same for Y and the flags for the window. 
+Anyway you will have noticed that I also set the renderer here and applied some flags to it as well. 
+The renderer is set because it is basically attached to the window and I don't plan to do anything fancy with it. 
+If you wanted to do something more with your renderer you may want to seperate that out. 
+As for the flags the accelerated one is basically just telling it to use hardware acceleration. 
+The present vsync flag just means that the render limits itself to your monitors refresh rate so you don't end up with insanely high but unneeded fps. 
