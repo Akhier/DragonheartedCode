@@ -195,6 +195,10 @@ First we want to initiate SDL itself so in the constructor we want to put the fo
 if (SDL_Init(SDL_INIT_EVERYTHING) != 0){
    _logerror("SDL_Init");
 }
+if (IMG_Init(IMG_INIT_PNG) != 0){
+    _logerror("IMG_Init");
+}
+
 if (TTF_Init() != 0){
    _logerror("TTF_Init");
 }
@@ -214,3 +218,8 @@ void DrW_SDL2::_logerror(const std::string &message){
 ```
 
 &nbsp;&nbsp;&nbsp;And it is really that simple. 
+Next we can do texture loading. 
+It is really a simple one as well so lets tack on the last one as well. 
+Rendering text as a texture is a bit more complex but lets get the code down first.
+
+```C++
