@@ -223,3 +223,30 @@ It is really a simple one as well so lets tack on the last one as well.
 Rendering text as a texture is a bit more complex but lets get the code down first.
 
 ```C++
+SDL_Texture* DrW_SDL2::_loadtexture(const std::string &file){
+    SDL_Texture* outputTexture = IMG_LoadTexture(_renderer, file.c_str());
+    if (outputTexture == nullptr){
+        _logerror("IMG_LoadTexture");
+    }
+    return outputTexture;
+}
+
+SDL_Texture* DrW_SDL2::_rendertextastexture(const std::string &message){
+    if (_font == nullptr){
+        return nullptr;
+    }
+    SDL_Surface* tempSurface = TTF_RenderText_Blended(_font, message.c_str(), color);
+    if (tempSurface == nullptr){
+        _logerror("TTF_RenderText_Blended")
+        return nullptr;
+    }
+    SDL_Texture* outputTexture = SDL_CreateTextureFromSurface(_renderer, tempSurface);
+    if (outputTexture == nullptr){
+        _logerror("SDL_CreateTextureFromSurface");
+    }
+    SDL_FreeSurface(tempSurface);
+    return outputTexture;
+}
+```
+
+&nbsp;&nbsp;&nbsp;
