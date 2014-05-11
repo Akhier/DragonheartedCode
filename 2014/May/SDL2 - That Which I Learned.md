@@ -154,7 +154,7 @@ Also note I am just putting what goes in the angle brackets below so the full fo
 * vector
 * map
 
-&nbsp;&nbsp;&nbsp;With that in time for some private variables and such. 
+&nbsp;&nbsp;&nbsp;With that in time for some private variables and such in the header file. 
 This will be somewhat forward looking as I am including some stuff before it is needed but they where easy to see. 
 Anyway we want SDL_Window, a SDL_Render for it, the TTF_Font, and a vector of SDL_Texture. 
 A thing to note about these is that we need to use pointers for this. 
@@ -175,3 +175,42 @@ It also lets me refer to all textures by the int for where they are in the vecto
 Mind you this is only possible if you don't remove from the vector but I don't intend to. 
 The other thing I considered was using a map so I could for instance use a string as the key. 
 In the end though I found that a vector was the easiest way to make sure I had as much space as I needed. 
+
+&nbsp;&nbsp;&nbsp;Now with those basics setup lets do a little more work in the header file before we move onto implementing this stuff. 
+First we want a way to log an error with SDL which is simple enough. 
+I actually just implemented this in the header when I tried this before but lets leave implementation in the .cpp files. 
+Next up we need something that will actually return a SDL_Texture that we want to load and a similar thing for text. 
+Because the first deals with actual errors from SDL and the others return an SDL2 object these will be private as well. 
+
+```C++
+void _logerror (const std::string &message);
+SDL_Texture* _loadtexture (const std::string &file);
+SDL_Texture* _rendertextastexture (const std::string &message, SDL_Color color);
+```
+
+&nbsp;&nbsp;&nbsp;With this all done let's head over to the .cpp file and do some work. 
+First we want to initiate SDL itself so in the constructor we want to put the following:
+
+```C++
+if (SDL_Init(SDL_INIT_EVERYTHING) != 0){
+   _logerror("SDL_Init");
+}
+if (TTF_Init() != 0){
+   _logerror("TTF_Init");
+}
+```
+
+&nbsp;&nbsp;&nbsp;You will note that I just init everything. 
+I don't know specifically what I need so I don't really feel like holding back on this. 
+You will notice of course that I am using the _logerror before I have actually shown it. 
+This is partly because I already know how it will be coded but mostly because this is how it will be used. 
+I don't need to know the specifics if I know this is the data it will accept. 
+Anyway lets do the code for SDL error handling. 
+
+```C++
+void DrW_SDL2::_logerror(const std::string &message){
+    std::cout << message << " Error: " << SDL_GetError() << std::endl;
+}
+```
+
+&nbsp;&nbsp;&nbsp;And it is really that simple. 
