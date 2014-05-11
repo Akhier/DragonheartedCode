@@ -338,4 +338,11 @@ int main(int argc, char **argv){
     SDL_Delay(2000);
     return 0;
 }
-```
+``` 
+
+&nbsp;&nbsp;&nbsp;With this in then running the project should open up a blank window for a couple seconds and there should be a couple warnings. 
+The warnings are about argc and argv not being used. 
+They are in because SDL requires them for compatability reasons. 
+AS for it staying up for those couple seconds because of the SDL_Delay command which accepts milliseconds to delay. 
+Of course this causes the window to be unresponsive but its just for testing at this point so thats okay. 
+Now lets make it so we can put an image up on the screen. 
