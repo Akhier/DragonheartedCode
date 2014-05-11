@@ -249,4 +249,7 @@ SDL_Texture* DrW_SDL2::_rendertextastexture(const std::string &message){
 }
 ```
 
-&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;I will note at this point that I am not really handling the errors so much as just noting when they happen. 
+Later I might come back and replace cout with writting the errors to a txt file but as it is I would really call it production ready but it is good enough for this. 
+Also note that for the text I am using Blended mode. 
+That would be the fancy way of doing it and depending on how it performs I may add in the ability to choose Shaded or even Solid as needed. 
