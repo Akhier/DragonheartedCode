@@ -192,15 +192,14 @@ SDL_Texture* _rendertextastexture (const std::string &message, SDL_Color color);
 First we want to initiate SDL itself so in the constructor we want to put the following:
 
 ```C++
-if (SDL_Init(SDL_INIT_EVERYTHING) != 0){
-   _logerror("SDL_Init");
-}
-if (IMG_Init(IMG_INIT_PNG) != 0){
-    _logerror("IMG_Init");
-}
-
-if (TTF_Init() != 0){
-   _logerror("TTF_Init");
+DrW_SDL2::DrW_SDL2()
+{
+    if (SDL_Init(SDL_INIT_EVERYTHING) != 0){
+       _logerror("SDL_Init");
+    }
+    if (TTF_Init() != 0){
+       _logerror("TTF_Init");
+    }
 }
 ```
 
@@ -231,13 +230,13 @@ SDL_Texture* DrW_SDL2::_loadtexture(const std::string &file){
     return outputTexture;
 }
 
-SDL_Texture* DrW_SDL2::_rendertextastexture(const std::string &message){
+SDL_Texture* DrW_SDL2::_rendertextastexture(const std::string &message, SDL_Color color){
     if (_font == nullptr){
         return nullptr;
     }
     SDL_Surface* tempSurface = TTF_RenderText_Blended(_font, message.c_str(), color);
     if (tempSurface == nullptr){
-        _logerror("TTF_RenderText_Blended")
+        _logerror("TTF_RenderText_Blended");
         return nullptr;
     }
     SDL_Texture* outputTexture = SDL_CreateTextureFromSurface(_renderer, tempSurface);
@@ -271,12 +270,12 @@ The first step though is simple enough, lets write something to create a window.
 void createWindow(const std::string &windowtitle, int x, int y, int width, int height, bool resizable);
 ```
 
-&nbsp;&nbsp;&nbsp;This could be enough but I want to change one thing and see if it works. 
+&nbsp;&nbsp;&nbsp;This could be enough but I want to add one thing. 
 While it is nice to specify exactly the x and y of your window SDL but sometimes you just want it to open wherever. 
-Since I don't really ever plan to have an x and y less then 0 we will set a default of -1 to both. 
+Since I don't really ever plan to have an x and y less then 0 we will add another createWindow which doen't have x and y arguments. 
 
 ```C+
-void createWindow(const std::string &windowtitle, int x = -1, int y = -1, int width, int height, bool resizable);
+void createWindow(const std::string &windowtitle, int width, int height, bool resizable);
 ```
 
 &nbsp;&nbsp;&nbsp;Now lets write the actual code which I will be doing something slightly tricky with. 
@@ -288,7 +287,7 @@ If a is greater than b then x is equal to y else it is equal to z.
 Anyway here is the code for creating a window. 
 
 ```C++
-void DrW_SDL2::createWindow(const std::string windowtitle, int x = -1, int y = -1, int width, int height, bool resizable);{
+void DrW_SDL2::createWindow(const std::string windowtitle, int x, int y, int width, int height, bool resizable){
     _window = SDL_CreateWindow(windowtitle.c_str(), x >= 0 ? x : SDL_WINDOWPOS_UNDEFINED, y >= 0 ? y : SDL_WINDOWPOS_UNDEFINED, width, height, resizable ? SDL_WINDOW_RESIZABLE : (SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE));
     if (_window == nullptr){
         _logerror("SDL_CreateWindow");
@@ -298,13 +297,45 @@ void DrW_SDL2::createWindow(const std::string windowtitle, int x = -1, int y = -
         _logerror("SDL_CreateRenderer");
     }
 }
+void DrW_SDL2::createWindow(const std::string windowtitle, int width, int height, bool resizable){
+    createWindow(windowtitle, -1, -1, width, height, resizable);
+}
 ```
 
 &nbsp;&nbsp;&nbsp;You will note I used the inline if three times and to be honest I didn't need to. 
 It is mostly just my own esthetics when it comes to coding. 
-I could have created ```int X = x;``` and then wrote ```if(x < 0) {X = SDL_WINDOWPOS_UNDEFINED;}``` and done the same for Y and the flags for the window. 
+I could have created ```int X = x;``` and then wrote ```if(x < 0) {X = SDL_WINDOWPOS_UNDEFINED;}``` and do the same for y and the flags. 
 Anyway you will have noticed that I also set the renderer here and applied some flags to it as well. 
 The renderer is set because it is basically attached to the window and I don't plan to do anything fancy with it. 
 If you wanted to do something more with your renderer you may want to seperate that out. 
 As for the flags the accelerated one is basically just telling it to use hardware acceleration. 
 The present vsync flag just means that the render limits itself to your monitors refresh rate so you don't end up with insanely high but unneeded fps. 
+
+&nbsp;&nbsp;&nbsp;With this we have reached an important point. 
+Basically we can finally test that this whole mess is working though we probably want to added a couple things first. 
+Lets add a couple things to the deconstructor as follows: 
+
+```C++
+DrW_SDL2::~DrW_SDL2(){
+    SDL_DestroyRenderer(_renderer);
+    SDL_DestroyWindow(_window);
+}
+
+```
+
+&nbsp;&nbsp;&nbsp;Those lines will take care of getting rid of what we will be making in this next step. 
+Which of course means we will be doing something with the libtest file. 
+I will be using an SDL command in the test at this time as there isn't a need for it in the wrapper yet but anyway heres the code: 
+
+```C++
+#include "drw_sdl2.h"
+
+const int SCREEN_WIDTH = 640, SCREEN_HEIGHT = 480;
+
+int main(int argc, char **argv){
+    DrW_SDL2* sdl = new DrW_SDL2();
+    sdl->createWindow("test window", SCREEN_WIDTH, SCREEN_HEIGHT, true);
+    SDL_Delay(2000);
+    return 0;
+}
+```
