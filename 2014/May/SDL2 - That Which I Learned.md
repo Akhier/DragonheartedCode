@@ -361,12 +361,12 @@ int createTexture(const std::string &file);
 ```C++
 int DrW_SDL2::createText(const std::string &message){
     SDL_Color color = {0, 0, 0, 255};
-    _textures.push_back(_rendertext(message, color));
+    _textures.push_back(_rendertextastexture(message, color));
     return _textures.size() - 1;
 }
 
 int DrW_SDL2::createTexture(const std::string &file){
-    _textures.push_back(_loadtexture(file, _renderer));
+    _textures.push_back(_loadtexture(file));
     return _textures.size() - 1;
 }
 ```
