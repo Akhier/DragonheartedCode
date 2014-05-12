@@ -376,3 +376,14 @@ This means that on the libtest side of things you just keep track of textures by
 With createText I am just having black as the color. 
 I will probably later add the ability to change the color, mostly likely with an enum for various colors. 
 Anyway with this we are halfway to the goal of loading an image. 
+
+&nbsp;&nbsp;&nbsp;We do have a bit of a thing now to decide. 
+Rendering a texture has a few options and a couple need the SDL_Rect. 
+When I did some work while learning I just used int[4] to represent this but I want a better option. 
+From what I can see there are a number of ways to do this. 
+Just use the int[4] as it is simple and works, Make my own struct Rect which is a copy of SDL_Rect, use a function that hides the rect, and finally make a class. 
+Because of some stuff I looked up I will be using that last option. 
+Lets actually get the class written and then I will explain what I did. 
+To note I will be putting the class in its own files named drw_sdl2_rect while the class itself is just called Rect. 
+
+```C++
