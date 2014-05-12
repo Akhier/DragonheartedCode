@@ -410,12 +410,12 @@ Rect::Rect(int x, int y){
     H = -1;
 }
 
-SDL_Rect Rect::getSDLRect(){
-    SDL_Rect output;
-    output.x = X;
-    output.y = Y;
-    output.w = W;
-    output.h = H;
+SDL_Rect* Rect::getSDLRect(){
+    SDL_Rect* output = new SDL_Rect;
+    output->x = X;
+    output->y = Y;
+    output->w = W;
+    output->h = H;
     return output;
 }
 ```
@@ -434,7 +434,7 @@ I have since figured a better way of doing it so I can reduce the unneeded dupli
 It will start with a private function. 
 
 ```C++
-void DrW_SDL2::_rendertexture(int textureid, SDL_Rect &source, SDL_Rect &destination){
+void DrW_SDL2::_rendertexture(const int textureid, const SDL_Rect* source, const SDL_Rect* destination){
     SDL_RenderCopy(_renderer, _textures[textureid], source, destination);
 }
 ```
@@ -445,27 +445,25 @@ These will be public as they won't be accepting SDL_Rect but rather our own Rect
 So lets get them into code. 
 
 ```C++
-Rect DrW_SDL2::_gettexturesize(int textureid, int x, int y){
-    Rect output;
-    output.X = x;
-    output.Y = y;
+Rect DrW_SDL2::_gettexturesize(const int textureid, int x, int y){
+    Rect output(x, y);
     SDL_QueryTexture(_textures[textureid], NULL, NULL, &output.W, &output.H);
     return output;
 }
 
-void DrW_SDL2::renderTexture(int textureid, Rect &destination){
+void DrW_SDL2::renderTexture(const int textureid, Rect destination){
     _rendertexture(textureid, NULL, destination.getSDLRect());
 }
 
-void DrW_SDL2::renderTexture(int textureid, int x, int y){
+void DrW_SDL2::renderTexture(const int textureid, int x, int y){
     renderTexture(textureid, _gettexturesize(textureid, x, y));
 }
 
-void DrW_SDL2::renderTexture(int textureid, Rect &source, Rect &destination){
+void DrW_SDL2::renderTexture(const int textureid, Rect source, Rect destination){
     _rendertexture(textureid, source.getSDLRect(), destination.getSDLRect());
 }
 
-void DrW_SDL2::renderTexture(int textureid, Rect &source, int x, int y){
+void DrW_SDL2::renderTexture(const int textureid, Rect source, int x, int y){
     renderTexture(textureid, source, _gettexturesize(textureid, x, y));
 }
 ```
