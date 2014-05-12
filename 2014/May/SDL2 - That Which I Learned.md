@@ -317,8 +317,14 @@ Lets add a couple things to the deconstructor as follows:
 
 ```C++
 DrW_SDL2::~DrW_SDL2(){
+    for (size_t iter = 0; iter < _textures.size(); ++iter){
+        SDL_DestroyTexture(_textures[iter]);
+    }
     SDL_DestroyRenderer(_renderer);
     SDL_DestroyWindow(_window);
+    IMG_Quit();
+    TTF_Quit();
+    SDL_Quit();
 }
 
 ```
@@ -333,8 +339,8 @@ I will be using an SDL command in the test at this time as there isn't a need fo
 const int SCREEN_WIDTH = 640, SCREEN_HEIGHT = 480;
 
 int main(int argc, char **argv){
-    DrW_SDL2* sdl = new DrW_SDL2();
-    sdl->createWindow("test window", SCREEN_WIDTH, SCREEN_HEIGHT, true);
+    DrW_SDL2 sdl;
+    sdl.createWindow("test window", SCREEN_WIDTH, SCREEN_HEIGHT, true);
     SDL_Delay(2000);
     return 0;
 }
@@ -346,3 +352,4 @@ They are in because SDL requires them for compatability reasons.
 AS for it staying up for those couple seconds because of the SDL_Delay command which accepts milliseconds to delay. 
 Of course this causes the window to be unresponsive but its just for testing at this point so thats okay. 
 Now lets make it so we can put an image up on the screen. 
+
