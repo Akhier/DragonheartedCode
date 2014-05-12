@@ -11,16 +11,16 @@ There are a couple important bits so lets document them here and now so we don't
 
 &nbsp;&nbsp;&nbsp;The first one is so any code I write with this isn't chained to SDL2. 
 I could go and write a wrapper for another similar thing and use it in place of this. 
-Mostly I am just paranoid here but since this is a learning experiance its okay as its showing how you can make code safe from changes in a library you use. 
+Mostly I am just paranoid here but since this is a learning experience its okay as its showing how you can make code safe from changes in a library you use. 
 The stuff in the middle is easy to understand so I don't have to say much about it. 
 Though I will note that Display text is its own bullet point because of it is separate from images. 
  
 ###Actually getting started 
 &nbsp;&nbsp;&nbsp;I have a project already setup for making a SDL2 project in my programming folder. 
-Having said that I won't be using it as I want to take us through all the steps as just like with a story the best place to start is the beggining. 
+Having said that I won't be using it as I want to take us through all the steps as just like with a story the best place to start is the beginning. 
 Anyway to start just open CodeBlocks and create a new project that is a Empty Project: 
 
-![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/Blog%20Images/SDL2%20-%20That%20Which%20I%20Learned/001.png "You should be able to do this even without this picture") 
+![While I did have a picture here it apparently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/Blog%20Images/SDL2%20-%20That%20Which%20I%20Learned/001.png "You should be able to do this even without this picture") 
 
 &nbsp;&nbsp;&nbsp;Next name it what you will. 
 I will be calling mine DragonWrapper_SDL2 because it stands out and gives me a naming convention for future wrappers. 
@@ -28,14 +28,14 @@ You will note that I am creating it at C:\Programming\ on my computer.
 I advise if your at all serious about programming on the computer your at have such a folder as it makes organization so much easier and some things are picky about placement. 
 You might even want to consider breaking it down even further in that folder if you program in multiple languages by having for instance a C++ folder. 
 
-![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/Blog%20Images/SDL2%20-%20That%20Which%20I%20Learned/002.png "The bit about C:\Programming\ is useful but not a required thing") 
+![While I did have a picture here it apparently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/Blog%20Images/SDL2%20-%20That%20Which%20I%20Learned/002.png "The bit about C:\Programming\ is useful but not a required thing") 
 
 &nbsp;&nbsp;&nbsp;Now a bit which really isn't important. 
-Basically if you can't tell what is different here I have the debug and release output set to the base directory rather then having seperate folders for them. 
+Basically if you can't tell what is different here I have the debug and release output set to the base directory rather then having separate folders for them. 
 I generally do this just to make placement of dll's easier on me. 
 While you don't have to do this if you don't later on when I put the various things in the base folder you might have to place them elsewhere. 
 
-![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/Blog%20Images/SDL2%20-%20That%20Which%20I%20Learned/003.png "Just something I started doing so I had less folders to go through") 
+![While I did have a picture here it apparently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/Blog%20Images/SDL2%20-%20That%20Which%20I%20Learned/003.png "Just something I started doing so I had less folders to go through") 
 
 &nbsp;&nbsp;&nbsp;Now we need to grab all the SDL2 bits we want for this project. 
 First off is [from here](http://www.libsdl.org/download-2.0.php "This is to the SDL2 download page") get the mingw dev version of SDL2. 
@@ -44,14 +44,14 @@ Finally we will want SDL2_ttf [thats here](http://www.libsdl.org/projects/SDL_tt
 Now with all those files unzip them with something like [7zip](http://www.7-zip.org/ "The program I use for unzipping stuff"). 
 Then do it again with what came out and you should have ended up with the following mess: 
 
-![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/Blog%20Images/SDL2%20-%20That%20Which%20I%20Learned/004.png "The numbers may vary if versions have changed. If they did I can't guarantee anything.") 
+![While I did have a picture here it apparently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/Blog%20Images/SDL2%20-%20That%20Which%20I%20Learned/004.png "The numbers may vary if versions have changed. If they did I can't guarantee anything.") 
 
 &nbsp;&nbsp;&nbsp;Now that we have that all there is a decision to make. 
 More to the point I have already made the decision but you should know that I did. 
 Basically do we want to use 32 or 64 bit versions. 
 Now if you are on a 32bit computer the decision is already made for you. 
 My decision was made because I even had to state that.
-I have slight tendancies to want to actually destribute my code to the world at large so if I even have to consider a programmer using a 32bit computer I better go with that.
+I have slight tendencies to want to actually distribute my code to the world at large so if I even have to consider a programmer using a 32bit computer I better go with that.
 
 &nbsp;&nbsp;&nbsp;Now that is out of the way lets make our lives easier. 
 We could leave everything where it is but lets not. 
@@ -66,13 +66,13 @@ Right click the project and select build options.
 From there select the top level so we can affect both Debug and Release builds. 
 As I am using some random things from C++11 which I am not sure of lets just check that off 
 
-![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/Blog%20Images/SDL2%20-%20That%20Which%20I%20Learned/005.png "I don't really have anything interesting to say about this")
+![While I did have a picture here it apparently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/Blog%20Images/SDL2%20-%20That%20Which%20I%20Learned/005.png "I don't really have anything interesting to say about this")
 
 &nbsp;&nbsp;&nbsp;Okay now lets select the Linker settings tab and add a few things to the "Other linker options" box. 
 We want to put -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -static-libgcc -static-libstdc++ in there so when we use the stuff it is available. 
 The window should now look like this (I put a line break in there so you can see it all, it doesn't do anything): 
 
-![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/Blog%20Images/SDL2%20-%20That%20Which%20I%20Learned/006.png "You could even put a line break after each item but meh") 
+![While I did have a picture here it apparently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/Blog%20Images/SDL2%20-%20That%20Which%20I%20Learned/006.png "You could even put a line break after each item but meh") 
 
 &nbsp;&nbsp;&nbsp;Now select the Search directories tab it will be by default on the sub tab called Compiler. 
 Click add and browse to wherever you stored your SDL2 stuff. 
@@ -80,12 +80,12 @@ In the include folder there is a SDL2 folder and that is what you want.
 It will ask whether you want to keep it a relative path. 
 I generally go with saying no to that and you will see I did so though the choice is up to you. 
 
-![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/Blog%20Images/SDL2%20-%20That%20Which%20I%20Learned/007.png "I reopened the browse to show that as well")
+![While I did have a picture here it apparently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/Blog%20Images/SDL2%20-%20That%20Which%20I%20Learned/007.png "I reopened the browse to show that as well")
 
 &nbsp;&nbsp;&nbsp;Now lets head onto the next sub tab which is called Linker. 
 Here we will be doing a similar thing but instead of include\SDL2 you just want the lib folder. 
 
-![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/Blog%20Images/SDL2%20-%20That%20Which%20I%20Learned/008.png "Same song different tune")
+![While I did have a picture here it apparently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/Blog%20Images/SDL2%20-%20That%20Which%20I%20Learned/008.png "Same song different tune")
 
 &nbsp;&nbsp;&nbsp;Finally (for this bit) head back on over to Compiler settings tab and change over to Debug. 
 It will ask if you want to save what you have done when you do the change (I highly advise you do save your work). 
@@ -93,11 +93,11 @@ Now for a little quality of life.
 In the options enable Enable all compiler warnings and Enable extra compiler warnings. 
 CodeBlocks by default has a very low level of warnings and you really want those warnings because they are a thing. 
 
-![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/Blog%20Images/SDL2%20-%20That%20Which%20I%20Learned/009.png "You might even considerer making them the default or something")
+![While I did have a picture here it apparently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/Blog%20Images/SDL2%20-%20That%20Which%20I%20Learned/009.png "You might even consider making them the default or something")
 
 &nbsp;&nbsp;&nbsp;Now to wrap up setup as a whole lets grab the dlls we want. 
 For this just head to where ever you stored all the stuff and crack open the bin. 
-As I mentioned above all the dlls for SDL2 are contained here, or atleast for our needs. 
+As I mentioned above all the dlls for SDL2 are contained here, or at least for our needs. 
 In this case our needs are as follows so just select them and copy them into the project folder. 
 
 * SDL2.dll
@@ -116,9 +116,9 @@ In this case our needs are as follows so just select them and copy them into the
 &nbsp;&nbsp;&nbsp;Now lets get some actual code on a page. 
 Well actually, lets get an actual page on the project though that is easy enough to do. 
 Just add a new class file, I will be calling mine DrW_SDL2. 
-Mostly because the Dr makes you think Doctor W which is cool, that and the three letters are relatively unique to help with autocomplete. 
+Mostly because the Dr makes you think Doctor W which is cool, that and the three letters are relatively unique to help with auto-complete. 
 
-![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](@010 "I don't know if this is all default so I included this image." 
+![While I did have a picture here it apparently failed. Inform me and I will try to fix it.](@010 "I don't know if this is all default so I included this image." 
 
 &nbsp;&nbsp;&nbsp;Now you have two files. 
 [name].cpp and [name].h which is fine but since I aim to have a library at the end of this so lets make one more file. 
@@ -130,9 +130,9 @@ You will note the Type is set to something like Console application.
 Change that to Dynamic library and then in the Build target files uncheck the libtest file. 
 Now when you build the release you will get a .dll file. 
 
-![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/011.png "You probably where able to do this but images are fun I guess.")
+![While I did have a picture here it apparently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/011.png "You probably where able to do this but images are fun I guess.")
 
-&nbsp;&nbsp;&nbsp;With this I can say we are trully done with setup but there is one thing to bring up. 
+&nbsp;&nbsp;&nbsp;With this I can say we are truly done with setup but there is one thing to bring up. 
 Basically all of my code for this and even this post itself will be on [Github](https://github.com/ "Where I go storing the code I don't mind people seeing"). 
 I use Git for source control even when I am not publishing it to Github. 
 So with that said at this point is where I did the first commit at this point and you can see [the code here](https://github.com/Akhier/DragonWrapper_SDL2 "I guess you could have technically just read to here and get the code but you wont learn anything that way"). 
@@ -167,7 +167,7 @@ std::vector<SDL_Texture*> _textures;
 Mainly I start them with a underscore '_' and I use it on all private names and they tend to be all lowercase. 
 This is just personal choice so do as you will but I like be able to tell at glance that something is private. 
 With this let me explain the one interesting bit here which is the vector. 
-The wrapper needs to be able to hold many textures to be useful and a vector is the simplest and without getting to far into it the most effeciant way for me to store them all. 
+The wrapper needs to be able to hold many textures to be useful and a vector is the simplest and without getting to far into it the most efficient way for me to store them all. 
 It also lets me refer to all textures by the int for where they are in the vector. 
 Mind you this is only possible if you don't remove from the vector but I don't intend to. 
 The other thing I considered was using a map so I could for instance use a string as the key. 
@@ -246,12 +246,12 @@ SDL_Texture* DrW_SDL2::_rendertextastexture(const std::string &message, SDL_Colo
 ```
 
 &nbsp;&nbsp;&nbsp;I will note at this point that I am not really handling the errors so much as just noting when they happen. 
-Later I might come back and replace cout with writting the errors to a txt file but as it is I would really call it production ready but it is good enough for this. 
+Later I might come back and replace cout with writing the errors to a text file but as it is I would really call it production ready but it is good enough for this. 
 Also note that for the text I am using Blended mode. 
 That would be the fancy way rendering text and depending on how it performs I may add in the ability to choose Shaded or even Solid as needed. 
 Anyway with this we have finished all the private functions we need at the moment. 
 Now I know I have been doing a lot of setup here with this code but that is because I know what I want it to do. 
-With this out of the way though I will be stepping into more fluid teritory. 
+With this out of the way though I will be stepping into more fluid territory. 
 The first step though is simple enough, lets write something to create a window. 
 
 ```C++
@@ -260,7 +260,7 @@ void createWindow(const std::string &windowtitle, int x, int y, int width, int h
 
 &nbsp;&nbsp;&nbsp;This could be enough but I want to add one thing. 
 While it is nice to specify exactly the x and y of your window SDL but sometimes you just want it to open wherever. 
-Since I don't really ever plan to have an x and y less then 0 we will add another createWindow which doen't have x and y arguments. 
+Since I don't really ever plan to have an x and y less then 0 we will add another createWindow which doesn't have x and y arguments. 
 
 ```C+
 void createWindow(const std::string &windowtitle, int width, int height, bool resizable);
@@ -295,7 +295,7 @@ It is mostly just my own esthetics when it comes to coding.
 I could have created ```int X = x;``` and then wrote ```if(x < 0) {X = SDL_WINDOWPOS_UNDEFINED;}``` and do the same for y and the flags. 
 Anyway you will have noticed that I also set the renderer here and applied some flags to it as well. 
 The renderer is set because it is basically attached to the window and I don't plan to do anything fancy with it. 
-If you wanted to do something more with your renderer you may want to seperate that out. 
+If you wanted to do something more with your renderer you may want to separate that out. 
 As for the flags the accelerated one is basically just telling it to use hardware acceleration. 
 The present vsync flag just means that the render limits itself to your monitors refresh rate so you don't end up with insanely high but unneeded fps. 
 
@@ -322,7 +322,7 @@ DrW_SDL2::~DrW_SDL2(){
 
 &nbsp;&nbsp;&nbsp;Those lines will take care of getting rid of what we will be making in this next step. 
 Which of course means we will be doing something with the libtest file. 
-I will be using an SDL command in the test at this time as there isn't a need for it in the wrapper yet but anyway heres the code: 
+I will be using an SDL command in the test at this time as there isn't a need for it in the wrapper yet but anyway here is the code: 
 
 ```C++
 #include "drw_sdl2.h"
@@ -339,9 +339,9 @@ int main(int argc, char **argv){
 
 &nbsp;&nbsp;&nbsp;With this in then running the project should open up a blank window for a couple seconds and there should be a couple warnings. 
 The warnings are about argc and argv not being used. 
-They are in because SDL requires them for compatability reasons. 
+They are in because SDL requires them for compatibility reasons. 
 AS for it staying up for those couple seconds because of the SDL_Delay command which accepts milliseconds to delay. 
-Of course this causes the window to be unresponsive but its just for testing at this point so thats okay. 
+Of course this causes the window to be unresponsive but its just for testing at this point so that is okay. 
 Now lets actually load a texture. 
 
 ```C++
@@ -459,10 +459,10 @@ void DrW_SDL2::renderTexture(const int textureid, Rect source, int x, int y){
 }
 ```
 
-&nbsp;&nbsp;&nbsp;I definitly prefer this to how my original try at this worked out. 
+&nbsp;&nbsp;&nbsp;I definitely prefer this to how my original try at this worked out. 
 Even only counting the internal bits and not including any bracket only lines I used 34 lines of code. 
 Here even with 2 extra functions all lines total comes out as 20 lines. 
-While shorter is not always better in this case it definitly is. 
+While shorter is not always better in this case it definitely is. 
 A couple more functions are needed but these are basically just the thinnest of wrappings.
 
 ```C++
@@ -479,7 +479,7 @@ void DrW_SDL2::renderpresent(){
 Anyway to test this we need an image and I have prepared one for us. 
 I have made a wonderful 64x22 png in the colors of Dwarf Fortress microline blue and a wonderful magenta. 
 
-![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/TestTexture.png "Trully a lovely image") 
+![While I did have a picture here it apparently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/TestTexture.png "Truly a lovely image") 
 
 &nbsp;&nbsp;&nbsp;With this lets render it to the screen. 
 I placed the image in the base folder for the project. 
@@ -540,7 +540,7 @@ void DrW_SDL2::setFont(const std::string &font, int fontsize){
 
 &nbsp;&nbsp;&nbsp;And that is it basically. 
 Because of a lot of the setup that was previously done we can just plug in some stuff and have it work. 
-Saddly I can't just have it work because we don't have a font to use. 
+Sadly I can't just have it work because we don't have a font to use. 
 Luckily for us everyone tends to have some ttf files lying around but just in case [here are some free fonts](http://ftp.gnu.org/gnu/freefont/ "gnu"). 
 I just grabbed Mono, Sans, and Serif from there and threw them in a fonts folder. 
 Now we can toss the following code just above the renderpresent and get it running.
