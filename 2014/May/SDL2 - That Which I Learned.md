@@ -354,11 +354,6 @@ Of course this causes the window to be unresponsive but its just for testing at 
 Now lets actually load a texture. 
 
 ```C++
-int createText(const std::string &message);
-int createTexture(const std::string &file);
-```
-
-```C++
 int DrW_SDL2::createText(const std::string &message){
     SDL_Color color = {0, 0, 0, 255};
     _textures.push_back(_rendertextastexture(message, color));
@@ -432,3 +427,45 @@ As for the private function it is very easy to see what it does.
 The big thing is that I declare DrW_SDL2 as a friend. 
 This means that even though it is private the wrapper class will be able to use the function. 
 Now this doesn't seem much but it means I get to use this class as SDL_Rect without exposing it outside the wrapper. 
+
+&nbsp;&nbsp;&nbsp;Now that we have the Rect squared away we need to write the functions that will actually render the textures. 
+When I learned this all I just had a bunch of replication between these functions as there are 4 or so options for rendering textures. 
+I have since figured a better way of doing it so I can reduce the unneeded duplication of code. 
+It will start with a private function. 
+
+```C++
+void DrW_SDL2::_rendertexture(int textureid, SDL_Rect &source, SDL_Rect &destination){
+    SDL_RenderCopy(_renderer, _textures[textureid], source, destination);
+}
+```
+
+&nbsp;&nbsp;&nbsp;And that was simple enough. 
+Now for four more functions and one helper. 
+These will be public as they won't be accepting SDL_Rect but rather our own Rect. 
+So lets get them into code. 
+
+```C++
+Rect DrW_SDL2::_gettexturesize(int textureid, int x, int y){
+    Rect output;
+    output.X = x;
+    output.Y = y;
+    SDL_QueryTexture(_textures[textureid], NULL, NULL, &output.W, &output.H);
+    return output;
+}
+
+void DrW_SDL2::renderTexture(int textureid, Rect &destination){
+    _rendertexture(textureid, NULL, destination.getSDLRect());
+}
+
+void DrW_SDL2::renderTexture(int textureid, int x, int y){
+    renderTexture(textureid, _gettexturesize(textureid, x, y));
+}
+
+void DrW_SDL2::renderTexture(int textureid, Rect &source, Rect &destination){
+    _rendertexture(textureid, source.getSDLRect(), destination.getSDLRect());
+}
+
+void DrW_SDL2::renderTexture(int textureid, Rect &source, int x, int y){
+    renderTexture(textureid, source, _gettexturesize(textureid, x, y));
+}
+```
