@@ -387,3 +387,39 @@ Lets actually get the class written and then I will explain what I did.
 To note I will be putting the class in its own files named drw_sdl2_rect while the class itself is just called Rect. 
 
 ```C++
+#include <SDL.h>
+
+class Rect{
+    public:
+        Rect(int x, int y, int w, int h);
+        Rect(int x, int y);
+        int X, Y, W, H;
+    private:
+        SDL_Rect getSDLRect();
+    friend class DrW_SDL2;
+};
+```
+
+```C++
+Rect::Rect(int x, int y, int w, int h){
+    X = x;
+    Y = y;
+    W = w;
+    H = h;
+}
+
+Rect::Rect(int x, int y){
+    X = x;
+    Y = y;
+}
+
+SDL_Rect Rect::getSDLRect(){
+    SDL_Rect output;
+    output.x = X;
+    output.y = Y;
+    output.w = W;
+    output.h = H;
+    return output;
+}
+```
+
