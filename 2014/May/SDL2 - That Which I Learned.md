@@ -556,4 +556,5 @@ sdl.renderTexture(text, 20, 20);
 ```
 &nbsp;&nbsp;&nbsp;Now when you run it there will be the word test in your square. 
 But now I am out of the easy stuff. 
-I had all of this basically figured out
+I had all of this basically figured out when I was learning this stuff. 
+The event handling though I just left in the main file where I have been trying to keep the SDL out of. 
