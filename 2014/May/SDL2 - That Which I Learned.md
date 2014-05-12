@@ -162,7 +162,7 @@ A thing to note about these is that we need to use pointers for this.
 ```C++
 SDL_Window* _window;
 SDL_Renderer* _renderer;
-SDL_Font* _font;
+SDL_Font* _font = NULL;
 std::vector<SDL_Texture*> _textures;
 ```
 
@@ -310,6 +310,9 @@ Lets add a couple things to the deconstructor as follows:
 DrW_SDL2::~DrW_SDL2(){
     for (size_t iter = 0; iter < _textures.size(); ++iter){
         SDL_DestroyTexture(_textures[iter]);
+    }
+    if (_font != NULL){
+        TTF_CloseFont(_font);
     }
     SDL_DestroyRenderer(_renderer);
     SDL_DestroyWindow(_window);
@@ -494,5 +497,63 @@ sdl.renderpresent();
 
 &nbsp;&nbsp;&nbsp;And with that the screen should pop up as all black but with our little image at 10,10 on the window. 
 But of course you could probably tell by the test image it is setup so we can use it as a mini tileset so lets add that functionality in now. 
-Because I already have the map for tile setup though even here there is a decision. 
-I use a vector of SDL_Rects to store locations on a sheet but 
+Now lets add a private Map of ints and a Vector of Rects and a couple public functions. 
+
+```C++
+std::map<int, std::vector<Rect>> _tilesetdefinition;
+```
+
+```C++
+int DrW_SDL2::setupTileset(const int textureid, Rect source){
+    _tilesetdefinition[textureid].push_back(source);
+    return _tilesetdefinition[textureid].size() - 1;
+}
+
+Rect DrW_SDL2::getSourceRect (const int textureid, const int tileid){
+    return _tilesetdefinition[textureid][tileid];
+}
+```
+
+&nbsp;&nbsp;&nbsp;With this setup we can only set one tile of a tileset at a time but any automation would be elsewhere. 
+Basically I would be wanting to import the tile info from a file or something similar. 
+Anyway lets break the picture up and paste it all over the place in our libtest. 
+Because of needing to replace some lines I will be replacing everything between int test and sdl.renderpresent() 
+
+```C++
+int solidPink = sdl.setupTileset(test, Rect(1, 1, 20, 20));
+int halfandhalf = sdl.setupTileset(test, Rect(22, 1, 20, 20));
+int solidBlue = sdl.setupTileset(test, Rect(43, 1, 20, 20));
+sdl.renderclear();
+sdl.renderTexture(test, sdl.getSourceRect(test, solidPink), Rect(20, 20, 20, 20));
+sdl.renderTexture(test, sdl.getSourceRect(test, solidBlue), Rect(40, 40, 20, 20));
+sdl.renderTexture(test, sdl.getSourceRect(test, halfandhalf), Rect(40, 20, 20, 20));
+sdl.renderTexture(test, sdl.getSourceRect(test, halfandhalf), Rect(20, 40, 20, 20));
+```
+
+&nbsp;&nbsp;&nbsp;These lines will make something that looks very much like the middle image of the png appear. 
+Of course it is actually a pink square, a blue square, and a couple half and half squares. 
+Seeing as that works we should probably get it so we can print text on the screen. 
+First we need to be able to set the font. 
+
+```C++
+void DrW_SDL2::setFont(const std::string &font, int fontsize){
+    _font = TTF_OpenFont(font.c_str(), fontsize);
+}
+```
+
+&nbsp;&nbsp;&nbsp;And that is it basically. 
+Because of a lot of the setup that was previously done we can just plug in some stuff and have it work. 
+Saddly I can't just have it work because we don't have a font to use. 
+Luckily for us everyone tends to have some ttf files lying around but just in case [here are some free fonts](http://ftp.gnu.org/gnu/freefont/ "gnu"). 
+I just grabbed Mono, Sans, and Serif from there and threw them in a fonts folder. 
+Now we can toss the following code just above the renderpresent and get it running.
+
+```C++
+sdl.setFont("fonts/freeserif.ttf", 16);
+int text = sdl.createText("test");
+sdl.renderTexture(text, 20, 20);
+
+```
+&nbsp;&nbsp;&nbsp;Now when you run it there will be the word test in your square. 
+But now I am out of the easy stuff. 
+I had all of this basically figured out
