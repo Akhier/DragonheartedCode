@@ -4,7 +4,6 @@ I will be using C++11, SDL2.0.3, SDL2_image, SDL2_ttf, and the IDE CodeBlocks wi
 There are a couple important bits so lets document them here and now so we don't end up over complicating things later. 
 * Most important is that Nothing public should take nor return anything specifically SDL 
 * Display a window (just a window, later I can add the support for multiple windows but we don't need that now) 
-* Display the window without borders 
 * Display an image 
 * Handle the break down of said image into tiles (basically make tilesets work) 
 * Display text 
@@ -131,7 +130,7 @@ You will note the Type is set to something like Console application.
 Change that to Dynamic library and then in the Build target files uncheck the libtest file. 
 Now when you build the release you will get a .dll file. 
 
-![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](@011 "You probably where able to do this but images are fun I guess.")
+![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/011.png "You probably where able to do this but images are fun I guess.")
 
 &nbsp;&nbsp;&nbsp;With this I can say we are trully done with setup but there is one thing to bring up. 
 Basically all of my code for this and even this post itself will be on [Github](https://github.com/ "Where I go storing the code I don't mind people seeing"). 
@@ -480,7 +479,7 @@ void DrW_SDL2::renderpresent(){
 Anyway to test this we need an image and I have prepared one for us. 
 I have made a wonderful 64x22 png in the colors of Dwarf Fortress microline blue and a wonderful magenta. 
 
-![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](@TestTexture "Trully a lovely image") 
+![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/TestTexture.png "Trully a lovely image") 
 
 &nbsp;&nbsp;&nbsp;With this lets render it to the screen. 
 I placed the image in the base folder for the project. 
@@ -553,6 +552,7 @@ sdl.renderTexture(text, 20, 20);
 
 ```
 &nbsp;&nbsp;&nbsp;Now when you run it there will be the word test in your square. 
-But now I am out of the easy stuff. 
-I had all of this basically figured out when I was learning this stuff. 
-The event handling though I just left in the main file where I have been trying to keep the SDL out of. 
+Of course with this done we have finished with implementing what I outlined way at the top. 
+There are a lot of stuff that could still be done but that is for later. 
+For now though I have finished with this post. 
+If you notice anything incorrect with what is here please let me know in the comments. 
