@@ -252,16 +252,7 @@ SDL_Texture* DrW_SDL2::_rendertextastexture(const std::string &message, SDL_Colo
 Later I might come back and replace cout with writting the errors to a txt file but as it is I would really call it production ready but it is good enough for this. 
 Also note that for the text I am using Blended mode. 
 That would be the fancy way rendering text and depending on how it performs I may add in the ability to choose Shaded or even Solid as needed. 
-Anyway with this we have almost finished all the private functions. 
-I just want to add one more thing which is going to be a map. 
-The maps job will be to store a vector of rectangles in relation to an int. 
-
-```C++
-std::map<int, std::vector<SDL_Rect>> _tilesetdefinition;
-```
-
-&nbsp;&nbsp;&nbsp;And that will as the name suggests store the tileset defintions. 
-Basically the SDL_Rect is just an x, y, width, and height which we will use to store where a specific tile is on a texture at [int] location. 
+Anyway with this we have finished all the private functions we need at the moment. 
 Now I know I have been doing a lot of setup here with this code but that is because I know what I want it to do. 
 With this out of the way though I will be stepping into more fluid teritory. 
 The first step though is simple enough, lets write something to create a window. 
@@ -503,3 +494,5 @@ sdl.renderpresent();
 
 &nbsp;&nbsp;&nbsp;And with that the screen should pop up as all black but with our little image at 10,10 on the window. 
 But of course you could probably tell by the test image it is setup so we can use it as a mini tileset so lets add that functionality in now. 
+Because I already have the map for tile setup though even here there is a decision. 
+I use a vector of SDL_Rects to store locations on a sheet but 
