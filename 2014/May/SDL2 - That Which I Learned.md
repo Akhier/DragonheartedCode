@@ -472,3 +472,34 @@ void DrW_SDL2::renderTexture(const int textureid, Rect source, int x, int y){
 Even only counting the internal bits and not including any bracket only lines I used 34 lines of code. 
 Here even with 2 extra functions all lines total comes out as 20 lines. 
 While shorter is not always better in this case it definitly is. 
+A couple more functions are needed but these are basically just the thinnest of wrappings.
+
+```C++
+void DrW_SDL2::renderclear(){
+    SDL_RenderClear(_renderer);
+}
+
+void DrW_SDL2::renderpresent(){
+    SDL_RenderPresent(_renderer);
+}
+```
+
+&nbsp;&nbsp;&nbsp;Very straightforward with this as it just lets us access the clear and render functions without actually touching the SDL. 
+Anyway to test this we need an image and I have prepared one for us. 
+I have made a wonderful 64x22 png in the colors of Dwarf Fortress microline blue and a wonderful magenta. 
+
+![While I did have a picture here it apperently failed. Inform me and I will try to fix it.](@TestTexture "Trully a lovely image") 
+
+&nbsp;&nbsp;&nbsp;With this lets render it to the screen. 
+I placed the image in the base folder for the project. 
+Just need to add the following right before SDL_Delay in libtest.cpp
+
+```C++
+int test = sdl.createTexture("TestTexture.png");
+sdl.renderclear();
+sdl.renderTexture(test, 10, 10);
+sdl.renderpresent();
+```
+
+&nbsp;&nbsp;&nbsp;And with that the screen should pop up as all black but with our little image at 10,10 on the window. 
+But of course you could probably tell by the test image it is setup so we can use it as a mini tileset so lets add that functionality in now. 
