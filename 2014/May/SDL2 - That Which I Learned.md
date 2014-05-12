@@ -351,5 +351,28 @@ The warnings are about argc and argv not being used.
 They are in because SDL requires them for compatability reasons. 
 AS for it staying up for those couple seconds because of the SDL_Delay command which accepts milliseconds to delay. 
 Of course this causes the window to be unresponsive but its just for testing at this point so thats okay. 
-Now lets make it so we can put an image up on the screen. 
+Now lets actually load a texture. 
 
+```C++
+int createText(const std::string &message);
+int createTexture(const std::string &file);
+```
+
+```C++
+int DrW_SDL2::createText(const std::string &message){
+    SDL_Color color = {0, 0, 0, 255};
+    _textures.push_back(_rendertext(message, color));
+    return _textures.size() - 1;
+}
+
+int DrW_SDL2::createTexture(const std::string &file){
+    _textures.push_back(_loadtexture(file, _renderer));
+    return _textures.size() - 1;
+}
+```
+
+&nbsp;&nbsp;&nbsp;They both return an int which is the location the texture is at. 
+This means that on the libtest side of things you just keep track of textures by an int which is nice and simple. 
+With createText I am just having black as the color. 
+I will probably later add the ability to change the color, mostly likely with an enum for various colors. 
+Anyway with this we are halfway to the goal of loading an image. 
