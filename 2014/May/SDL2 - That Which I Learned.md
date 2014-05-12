@@ -467,3 +467,8 @@ void DrW_SDL2::renderTexture(const int textureid, Rect source, int x, int y){
     renderTexture(textureid, source, _gettexturesize(textureid, x, y));
 }
 ```
+
+&nbsp;&nbsp;&nbsp;I definitly prefer this to how my original try at this worked out. 
+Even only counting the internal bits and not including any bracket only lines I used 34 lines of code. 
+Here even with 2 extra functions all lines total comes out as 20 lines. 
+While shorter is not always better in this case it definitly is. 
