@@ -9,14 +9,12 @@ There are a couple important bits so lets document them here and now so we don't
 * Handle the break down of said image into tiles (basically make tilesets work) 
 * Display text 
 * Change the font and size of displayed text 
-* Handle input for mouse and keyboard 
 
 &nbsp;&nbsp;&nbsp;The first one is so any code I write with this isn't chained to SDL2. 
 I could go and write a wrapper for another similar thing and use it in place of this. 
 Mostly I am just paranoid here but since this is a learning experiance its okay as its showing how you can make code safe from changes in a library you use. 
 The stuff in the middle is easy to understand so I don't have to say much about it. 
 Though I will note that Display text is its own bullet point because of it is separate from images. 
-In this whole list the only one that might cause problems is the last one as I haven't actually done that yet though I have an idea how I will. 
  
 ###Actually getting started 
 &nbsp;&nbsp;&nbsp;I have a project already setup for making a SDL2 project in my programming folder. 
