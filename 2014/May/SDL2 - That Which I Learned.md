@@ -411,6 +411,8 @@ Rect::Rect(int x, int y, int w, int h){
 Rect::Rect(int x, int y){
     X = x;
     Y = y;
+    W = -1;
+    H = -1;
 }
 
 SDL_Rect Rect::getSDLRect(){
@@ -423,3 +425,10 @@ SDL_Rect Rect::getSDLRect(){
 }
 ```
 
+&nbsp;&nbsp;&nbsp;With this we can continue but first lets look at what I did with the Rect class. 
+In the constructor that only takes x and y I set the width and height to -1. 
+This will tell me I need to set those later on. 
+As for the private function it is very easy to see what it does. 
+The big thing is that I declare DrW_SDL2 as a friend. 
+This means that even though it is private the wrapper class will be able to use the function. 
+Now this doesn't seem much but it means I get to use this class as SDL_Rect without exposing it outside the wrapper. 
