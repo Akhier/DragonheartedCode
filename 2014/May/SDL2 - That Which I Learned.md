@@ -55,22 +55,22 @@ Now if you are on a 32bit computer the decision is already made for you.
 My decision was made because I even had to state that.
 I have slight tendencies to want to actually distribute my programs to the world at large so if I even have to consider about a programmer using a 32bit computer I better go with that.
 
-&nbsp;&nbsp;&nbsp;Now that is out of the way lets make our lives easier. 
-We could leave everything where it is but lets not. 
+&nbsp;&nbsp;&nbsp;Now that is out of the way let's make our lives easier. 
+We could leave everything where it is but let's not. 
 In each of the folders is another folder called i686-w64-mingw32. 
 Then in that folder is bin, include, and lib which are the important ones for us. 
 Throw them all into one folder (I called mine "SDL2 32" because it is SDL2 and 32bit). 
 This will let us link to just one place when it comes time for that. 
 Also all the dll's you will need are in one bin folder which is convenient. 
 
-&nbsp;&nbsp;&nbsp;Now that we did that lets hook them up to our project. 
+&nbsp;&nbsp;&nbsp;Now that we did that let's hook them up to our project. 
 Right click on the project and select build options. 
 From there select the top level so we can affect both Debug and Release builds. 
-As I am using some random things from C++11 lets just check that off right away. 
+As I am using some random things from C++11 let's just check that off right away. 
 
 ![While I did have a picture here it apparently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/Blog%20Images/SDL2%20-%20That%20Which%20I%20Learned/005.png "I don't really have anything interesting to say about this")
 
-&nbsp;&nbsp;&nbsp;Okay now lets select the Linker settings tab and add a few things to the "Other linker options" box. 
+&nbsp;&nbsp;&nbsp;Okay now let's select the Linker settings tab and add a few things to the "Other linker options" box. 
 We want to put -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -static-libgcc -static-libstdc++ in there so when we use the stuff it will be available right away. 
 The window should now look like this (I put line breaks in there so you can see it all, it doesn't do anything): 
 
@@ -84,7 +84,7 @@ I generally go with saying no and you will see I did so though the choice is up 
 
 ![While I did have a picture here it apparently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/Blog%20Images/SDL2%20-%20That%20Which%20I%20Learned/007.png "I reopened the browse to show that as well")
 
-&nbsp;&nbsp;&nbsp;Now lets head onto the next sub tab which is called Linker. 
+&nbsp;&nbsp;&nbsp;Now let's head onto the next sub tab which is called Linker. 
 Here we will be doing a similar thing but instead of the include\SDL2 folder you just want the lib folder. 
 
 ![While I did have a picture here it apparently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/Blog%20Images/SDL2%20-%20That%20Which%20I%20Learned/008.png "Same song different tune")
@@ -97,7 +97,7 @@ CodeBlocks by default uses a low level of warnings and you really want more of t
 
 ![While I did have a picture here it apparently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/Blog%20Images/SDL2%20-%20That%20Which%20I%20Learned/009.png "You might even consider making them the default or something")
 
-&nbsp;&nbsp;&nbsp;Now to finish the basic setup so lets grab the dlls we want. 
+&nbsp;&nbsp;&nbsp;Now to finish the basic setup so let's grab the dlls we want. 
 For this just head to where ever you stored all the stuff and crack open the bin folder. 
 As I mentioned above all the dlls for SDL2 are contained here, or at least for our needs. 
 In this case what we need is as follows, so just select them and copy them into the project folder. 
@@ -115,8 +115,8 @@ In this case what we need is as follows, so just select them and copy them into 
 * zlib.dll
 
 ###Start of Actual Code
-&nbsp;&nbsp;&nbsp;Now lets get some actual code on a page. 
-Well actually, lets get an actual page on the project. 
+&nbsp;&nbsp;&nbsp;Now let's get some actual code on a page. 
+Well actually, let's get an actual page on the project. 
 To start just add a new class file, I will be calling mine DrW_SDL2. 
 Mostly because the Dr makes you think Doctor W which is cool, that and the three letters are relatively unique to help with auto-complete. 
 
@@ -132,7 +132,7 @@ You will note the Type is set to something like Console application.
 Change that to Dynamic library and then in the Build target files uncheck the libtest file. 
 Now when you build the release you will get a .dll file. 
 
-![While I did have a picture here it apparently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/011.png "You probably where able to do this but images are fun I guess.")
+![While I did have a picture here it apparently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/011.png "You probably were able to do this but images are fun I guess.")
 
 &nbsp;&nbsp;&nbsp;With this I can say we are truly done with setup but there is one thing to bring up. 
 Basically all of my code for this and even this post itself will be on [Github](https://github.com/ "Where I go storing the code I don't mind people seeing"). 
@@ -176,9 +176,9 @@ Mind you this is only possible if you don't remove from the vector but I don't i
 The other thing I considered was using a map so I could for instance use a string as the key. 
 In the end though I found that a vector was the easiest way to make sure I had as much space as I needed without over-complicating it. 
 
-&nbsp;&nbsp;&nbsp;Now with that done lets do a little more work in the header file before we move onto implementing it all. 
+&nbsp;&nbsp;&nbsp;Now with that done let's do a little more work in the header file before we move onto implementing it all. 
 First we want a way to log an error with SDL which is simple enough. 
-I actually just implemented this in the header when I tried this before but lets leave implementation of things in the .cpp files. 
+I actually just implemented this in the header when I tried this before but let's leave implementation of things in the .cpp files. 
 After that we need something that will actually return a SDL_Texture that we want to load and a similar thing for text. 
 Because the first deals with actual errors from SDL and the others return an SDL2 object these will be private as well. 
 
@@ -208,7 +208,7 @@ I don't know specifically what I need so I don't really feel like holding back o
 You will also notice of course that I am using the _logerror before I have actually shown it. 
 This is partly because I already know how it will be coded, but mostly because this is how it will be used. 
 I don't need to know the specifics if I know this is the data it will accept. 
-Anyway lets do the actual code for SDL error handling. 
+Anyway let's do the actual code for SDL error handling. 
 
 ```C++
 void DrW_SDL2::_logerror(const std::string &message){
@@ -257,7 +257,7 @@ Anyway we have finished all the private functions we need at the moment.
 Now I know I have been doing a lot of setup here with this code but that is because I know what I want it to do. 
 If you where to start from scratch this would probably be a little more haphazard. 
 With this out of the way though I will be stepping into more fluid territory. 
-The first step in this is simple enough though, lets write something to create a window. 
+The first step in this is simple enough though, let's write something to create a window. 
 
 ```C++
 void createWindow(const std::string &windowtitle, int x, int y, int width, int height, bool resizable);
@@ -271,7 +271,7 @@ We will now add another createWindow which doesn't have the x and y arguments.
 void createWindow(const std::string &windowtitle, int width, int height, bool resizable);
 ```
 
-&nbsp;&nbsp;&nbsp;With that lets write the actual code but first I will be explaining something slightly tricky I plan to use. 
+&nbsp;&nbsp;&nbsp;With that let's write the actual code but first I will be explaining something slightly tricky I plan to use. 
 Seeing as it is something a little beyond the basics I will explain it first. 
 I am going to use an "inline if" in the code. 
 What happens is exactly the same as a normal if but as noted inline. 
@@ -297,7 +297,7 @@ void DrW_SDL2::createWindow(const std::string windowtitle, int width, int height
 ```
 
 &nbsp;&nbsp;&nbsp;You will note I used the inline if three times and to be honest I didn't need to. 
-It is mostly just my own esthetics when it comes to coding. 
+It is mostly just my own aesthetics when it comes to coding. 
 I could have created ```int X = x;``` and then wrote ```if(x < 0) {X = SDL_WINDOWPOS_UNDEFINED;}``` and do the same for y and the flags. 
 Anyway you will have noticed that I also set the renderer here and applied some flags to it as well. 
 The renderer is set here because it is basically attached to the window and I don't plan to do anything fancy with it. 
@@ -307,7 +307,7 @@ The present vsync flag means that the render limits itself to your monitors refr
 
 &nbsp;&nbsp;&nbsp;With this we have reached an important point. 
 Basically we can finally test that this whole mess is working though we probably want to added a couple things first. 
-So lets add the following to the deconstructor: 
+So let's add the following to the deconstructor: 
 
 ```C++
 DrW_SDL2::~DrW_SDL2(){
@@ -346,7 +346,7 @@ int main(int argc, char **argv){
 &nbsp;&nbsp;&nbsp;With that in, running the project should open up a blank window for a couple seconds and there should be a couple warnings in the build messages. 
 The warnings are about argc and argv not being used. 
 They from what I can tell don't matter and are in because SDL requires them for compatibility reasons. 
-AS for it staying up for those couple seconds this is because of the SDL_Delay command. 
+As for it staying up for those couple seconds this is because of the SDL_Delay command. 
 It accepts an int representing the number of milliseconds to delay. 
 Of course this causes the window to be unresponsive but its just for testing at this point so that is okay. 
 Now to actually load a texture. 
@@ -368,7 +368,6 @@ int DrW_SDL2::createTexture(const std::string &file){
 This means that on the libtest side of things you just keep track of textures by an int which is simple and straightforward. 
 With the createText code I am just having black as the color of the text. 
 I will probably at a later date add the ability to change the color, mostly likely with an enum for various colors. 
-This is beyond the scope of the current project though so later date won't be in this post. 
 Anyway with this we are halfway to the goal of displaying an image. 
 
 &nbsp;&nbsp;&nbsp;We do have a bit of a thing now to decide. 
@@ -377,8 +376,8 @@ When I did some work while learning SDL I just used  and int array to represent 
 From what I can tell there are about 4 of ways to do this. 
 Just use the int array as it is simple and works, Make my own struct Rect, use a function that hides the use of SDL_Rect, and finally make a class Rect. 
 Because of some stuff I looked into we will be using the last option. 
-But lets write the class and then I will explain what I did. 
-To note I will be putting the class in its own files named drw_sdl2_rect while the class itself is just called Rect. 
+But let's write the class and then I will explain what I did. 
+Do note I will be putting the class in its own files named drw_sdl2_rect while the class itself is just called Rect. 
 
 drw_sdl2_rect.h
 ```C++
@@ -421,7 +420,7 @@ SDL_Rect* Rect::_getsdlrect(){
 }
 ```
 
-&nbsp;&nbsp;&nbsp;With this we can continue but first lets look at what I did with the Rect class. 
+&nbsp;&nbsp;&nbsp;With this we can continue but first let's look at what I did with the Rect class. 
 In the constructor that only takes x and y I set the width and height to -1. 
 This will tell me I need to set those later on and if I forget definitely throw an error. 
 If I used a 0 or some other way to show it wasn't set I might end up not setting them somewhere and wondering why the texture isn't rendering. 
@@ -489,7 +488,7 @@ I have made a wonderful 64x22 png in the colors of Dwarf Fortress microline and 
 
 ![While I did have a picture here it apparently failed. Inform me and I will try to fix it.](http://i607.photobucket.com/albums/tt156/akhierthedragonhearted/TestTexture.png "Truly a lovely image") 
 
-&nbsp;&nbsp;&nbsp;With this lets render it to the screen. 
+&nbsp;&nbsp;&nbsp;With this let's render it to the screen. 
 I placed the image in the base folder for the project and we just need to add the following lines right before SDL_Delay in libtest.cpp
 
 ```C++
@@ -501,7 +500,7 @@ sdl.renderpresent();
 
 &nbsp;&nbsp;&nbsp;With that the screen should pop up as all black but with our little image at 10,10 on the screen. 
 But of course you could probably tell by the test image it is setup so we can use it as a mini tileset. 
-So lets add that functionality in now. 
+So let's add that functionality in now. 
 First to add a private Map with int as the key and a Vector of Rect. 
 Next we will also want a couple public functions. 
 
@@ -522,7 +521,7 @@ Rect DrW_SDL2::getSourceRect (const int textureid, const int tileid){
 
 &nbsp;&nbsp;&nbsp;This setup can only set one tile of a tileset at a time but any automation should really be elsewhere. 
 Basically I would be wanting to import the tile info from a file or something similar. 
-Anyway lets break the picture up and paste it all over the place in our libtest. 
+Anyway let's break the picture up and paste it all over the place in our libtest. 
 Because of needing to replace some lines I will be replacing everything between int test and sdl.renderpresent() 
 
 ```C++
