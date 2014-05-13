@@ -390,7 +390,7 @@ class Rect{
         Rect(int x, int y);
         int X, Y, W, H;
     private:
-        SDL_Rect getSDLRect();
+        SDL_Rect _getsdlrect();
     friend class DrW_SDL2;
 };
 ```
@@ -411,7 +411,7 @@ Rect::Rect(int x, int y){
     H = -1;
 }
 
-SDL_Rect* Rect::getSDLRect(){
+SDL_Rect* Rect::_getsdlrect(){
     SDL_Rect* output = new SDL_Rect;
     output->x = X;
     output->y = Y;
@@ -451,7 +451,7 @@ Rect DrW_SDL2::_gettexturesize(const int textureid, int x, int y){
 }
 
 void DrW_SDL2::renderTexture(const int textureid, Rect destination){
-    _rendertexture(textureid, NULL, destination.getSDLRect());
+    _rendertexture(textureid, NULL, destination._getsdlrect());
 }
 
 void DrW_SDL2::renderTexture(const int textureid, int x, int y){
@@ -459,7 +459,7 @@ void DrW_SDL2::renderTexture(const int textureid, int x, int y){
 }
 
 void DrW_SDL2::renderTexture(const int textureid, Rect source, Rect destination){
-    _rendertexture(textureid, source.getSDLRect(), destination.getSDLRect());
+    _rendertexture(textureid, source._getsdlrect(), destination._getsdlrect());
 }
 
 void DrW_SDL2::renderTexture(const int textureid, Rect source, int x, int y){
@@ -696,7 +696,7 @@ Rect DrW_SDL2::_gettexturesize(const int textureid, int x, int y){
 }
 
 void DrW_SDL2::renderTexture(const int textureid, Rect destination){
-    _rendertexture(textureid, NULL, destination.getSDLRect());
+    _rendertexture(textureid, NULL, destination._getsdlrect());
 }
 
 void DrW_SDL2::renderTexture(const int textureid, int x, int y){
@@ -704,7 +704,7 @@ void DrW_SDL2::renderTexture(const int textureid, int x, int y){
 }
 
 void DrW_SDL2::renderTexture(const int textureid, Rect source, Rect destination){
-    _rendertexture(textureid, source.getSDLRect(), destination.getSDLRect());
+    _rendertexture(textureid, source._getsdlrect(), destination._getsdlrect());
 }
 
 void DrW_SDL2::renderTexture(const int textureid, Rect source, int x, int y){
@@ -760,7 +760,7 @@ class Rect{
         Rect(int x, int y);
         int X, Y, W, H;
     private:
-        SDL_Rect* getSDLRect();
+        SDL_Rect* _getsdlrect();
     friend class DrW_SDL2;
 };
 
@@ -785,7 +785,7 @@ Rect::Rect(int x, int y){
     H = -1;
 }
 
-SDL_Rect* Rect::getSDLRect(){
+SDL_Rect* Rect::_getsdlrect(){
     SDL_Rect* output = new SDL_Rect;
     output->x = X;
     output->y = Y;
