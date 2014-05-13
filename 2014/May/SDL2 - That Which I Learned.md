@@ -40,7 +40,7 @@ While you don't have to do this if you don't later on when I put the various thi
 &nbsp;&nbsp;&nbsp;Now we need to grab all the SDL2 bits we want for this project. 
 First off is [from here](http://www.libsdl.org/download-2.0.php "This is to the SDL2 download page") get the mingw dev version of SDL2. 
 Next is the mingw dev version of SDL2_image [found here](http://www.libsdl.org/projects/SDL_image/ "This is to the SDL2_image download page"). 
-Finally we will want SDL2_ttf [thats here](http://www.libsdl.org/projects/SDL_ttf/ "This is to the SDL2_ttf download page") and once again get the mingw dev version. 
+Finally we will want SDL2_ttf [that is here](http://www.libsdl.org/projects/SDL_ttf/ "This is to the SDL2_ttf download page") and once again get the mingw dev version. 
 Now with all those files unzip them with something like [7zip](http://www.7-zip.org/ "The program I use for unzipping stuff"). 
 Then do it again with what came out and you should have ended up with the following mess: 
 
@@ -345,7 +345,7 @@ int main(int argc, char **argv){
 The warnings are about argc and argv not being used. 
 They from what I can tell don't matter and are in because SDL requires them for compatibility reasons. 
 AS for it staying up for those couple seconds this is because of the SDL_Delay command. 
-It accepts an int repersenting the number of milliseconds to delay so 2000 will delay by 2 seconds. 
+It accepts an int representing the number of milliseconds to delay so 2000 will delay by 2 seconds. 
 Of course this causes the window to be unresponsive but its just for testing at this point so that is okay. 
 Now to actually load a texture. 
 
@@ -421,7 +421,7 @@ SDL_Rect* Rect::getSDLRect(){
 
 &nbsp;&nbsp;&nbsp;With this we can continue but first lets look at what I did with the Rect class. 
 In the constructor that only takes x and y I set the width and height to -1. 
-This will tell me I need to set those later on and if I forget definitly throw an error. 
+This will tell me I need to set those later on and if I forget definitely throw an error. 
 If I used a 0 or some other way to show it wasn't set I might end up not setting them somewhere and wondering why the texture isn't rendering. 
 As for the private function it is very easy to see what it does. 
 The big thing is that I declare my base class DrW_SDL2 as a friend. 
@@ -565,7 +565,7 @@ sdl.renderTexture(text, 20, 20);
 Of course with this done we have finished with implementing what I outlined way at the top. 
 There are a lot of stuff that could still be done but that is for later. 
 You can now take the code and switch it the build target to release and get a dll which you can use or even just take the files and use them as is. 
-At the very bottom I have the final code as done in this post as I will definitly be adding to the wrapper in the future as I need to. 
+At the very bottom I have the final code as done in this post as I will definitely be adding to the wrapper in the future as I need to. 
 This is the barest boned structure and if you can follow it up to here and want to use it I advise you not wait for me to do so. 
 The best way to learn this stuff is by doing and I might not need the features you want. 
 Also if there is any errors in the code or I did something that while technically correct isn't proper please tell me. 
