@@ -61,7 +61,7 @@ In each of the folders is another folder called i686-w64-mingw32.
 Then in that folder is bin, include, and lib which are the important ones for us. 
 Throw them all into one folder (I called mine "SDL2 32" because it is SDL2 and 32bit). 
 This will let us link to just one place when it comes time for that. 
-Also all the dll's you will need are in one bin folder which is convient. 
+Also all the dll's you will need are in one bin folder which is convenient. 
 
 &nbsp;&nbsp;&nbsp;Now that we did that lets hook them up to our project. 
 Right click on the project and select build options. 
@@ -139,7 +139,7 @@ Basically all of my code for this and even this post itself will be on [Github](
 I use Git for source control even when I am not publishing it to Github. 
 So with that said it was at this point where I did the first commit on the project. 
 You can see [the code here](https://github.com/Akhier/DragonWrapper_SDL2 "I guess you could have technically just read to here and get the code but you wont learn anything that way"). 
-Also of interest, as I mentioned, I have my blog posts up on my github so you can [see my posts here](https://github.com/Akhier/DragonheartedCode "Also see what editing I did to a blog post before it goes up and maybe fix my past posts and submit your own pull request") and even see what is in the workings. 
+Also of interest, as I mentioned, I have my blog posts up on my Github so you can [see my posts here](https://github.com/Akhier/DragonheartedCode "Also see what editing I did to a blog post before it goes up and maybe fix my past posts and submit your own pull request") and even see what is in the workings. 
 So with that all out of the way time to put code on the page. 
 
 &nbsp;&nbsp;&nbsp;Now there are many ways to start on a project but for this there are a few things I think are important to get out of the way. 
@@ -174,7 +174,7 @@ The wrapper needs to be able to hold many textures to be useful and a vector was
 It also lets me refer to all textures by the int for where they are in the vector. 
 Mind you this is only possible if you don't remove from the vector but I don't intend to. 
 The other thing I considered was using a map so I could for instance use a string as the key. 
-In the end though I found that a vector was the easiest way to make sure I had as much space as I needed without overcomplicating it. 
+In the end though I found that a vector was the easiest way to make sure I had as much space as I needed without over-complicating it. 
 
 &nbsp;&nbsp;&nbsp;Now with that done lets do a little more work in the header file before we move onto implementing it all. 
 First we want a way to log an error with SDL which is simple enough. 
@@ -189,7 +189,7 @@ SDL_Texture* _rendertextastexture (const std::string &message, SDL_Color color);
 ```
 
 &nbsp;&nbsp;&nbsp;Now let's head over to the .cpp file and get some of this stuff working. 
-We want to fisrt initiate SDL itself so in the constructor we want to put the following:
+We want to first initiate SDL itself so in the constructor we want to put the following:
 
 ```C++
 DrW_SDL2::DrW_SDL2()
@@ -568,7 +568,7 @@ At the very bottom I have the final code as done in this post as I will definite
 This is the barest boned structure and if you can follow it up to here and want to use it I advise you not wait for me to do so. 
 The best way to learn this stuff is by doing and I might not need the features you want. 
 Also if there is any errors in the code or I did something that while technically correct isn't proper please tell me. 
-It is much better for me to be told I am wrong so I can fix it rather having it stay wrong and missinform people with this post. 
+It is much better for me to be told I am wrong so I can fix it rather having it stay wrong and misinform people with this post. 
 
 drw_sdl2.h
 ```C++
