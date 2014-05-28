@@ -2,7 +2,7 @@
 
 &nbsp;&nbsp;&nbsp;I have been on the cusp of making a roguelike for a long time now. 
 As of Late I have mostly been stuck at redesigning my map generator over and over. 
-My most complete attempt was a couple years ago for a 7drl and it failed because of early design choices. 
+My most complete attempt so far was a couple years ago for a 7drl and it failed because of early design choices. 
 This basically means I could have avoided it if I had planned ahead and so this time around I will do so. 
 
 &nbsp;&nbsp;&nbsp;To start let's layout what the game will be like overall. 
