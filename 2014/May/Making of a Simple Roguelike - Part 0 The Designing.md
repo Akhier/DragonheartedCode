@@ -1,15 +1,15 @@
 ###Design It First
 
 &nbsp;&nbsp;&nbsp;I have been on the cusp of making a roguelike for a long time now. 
-As of Late I have mostly been stuck at redisigning my map generator over and over. 
+As of Late I have mostly been stuck at redesigning my map generator over and over. 
 My most complete attempt was a couple years ago for a 7drl and it failed because of early design choices. 
 This basically means I could have avoided it if I had planned ahead and so this time around I will do so. 
 
 &nbsp;&nbsp;&nbsp;To start let's layout what the game will be like overall. 
 I want a simple twelve level dungeon with only a dash of flavor. 
 Each level introduces a new enemy type with a few types from previous levels thrown in. 
-There will be a "boss" on each level but you are not required to figth them ever. 
-The combat will be low hp and probably the most complex bit because of time manegment. 
+There will be a "boss" on each level but you are not required to fight them ever. 
+The combat will be low hp and probably the most complex bit because of time management. 
 With the high level view layed out lets take a closer look at each bit. 
 
 &nbsp;&nbsp;&nbsp;The number of levels was chosen at random. 
@@ -24,10 +24,10 @@ Probably will fit it on the start screen.
 The original plan was for me to use the whole alphabet but my requirement for enemies made that not very practical. 
 What I required was each enemy type being in some way unique. 
 There is actually a little notebook I keep on me and it has a lot of notes in it. 
-What my general concensus over a few months of design in that notebook is that 26 is too many for something as simple as I want. 
+What my general consensus over a few months of design in that notebook is that 26 is too many for something as simple as I want. 
 So yeah, with only 12 things I need to design this should be a lot easier for me to handle. 
 
-&nbsp;&nbsp;&nbsp;Having a boss on each level was originaly going to be a secret feature. 
+&nbsp;&nbsp;&nbsp;Having a boss on each level was originally going to be a secret feature. 
 Since I am posting about it that is no longer the case so the second purpose now will take the forefront. 
 Basically the plan for the bosses is that they only show up if you defeat all enemies on a level. 
 They also are the only form of advancement of your character besides hp. 
@@ -44,11 +44,11 @@ There are pages of notes in my notebook on the time system I want to use and it 
 My basic plan to simplify it is reduce the numbers. 
 As it is written I have all kinds of interesting mechanics but for this game I can't expect people to learn it. 
 By reducing the numbers down to a range of 1 to 9 then even without understanding of the system people can comprehend it. 
-Though I will still keep some of the interesting things such as damage happining at the end of the attack. 
+Though I will still keep some of the interesting things such as damage happening at the end of the attack. 
 
 &nbsp;&nbsp;&nbsp;The above gives a decent outline though it probably is missing some things. 
-While randomly choosen the number of levels feels right. 
-I beleive I can manage 12 unique feeling enemies. 
+While randomly chosen the number of levels feels right. 
+I believe I can manage 12 unique feeling enemies. 
 The concept behind the bosses has been in my head for a while so should work out. 
 With the combat it might take some jury rigging of my original design but that happens. 
 So yeah overall it should all fit together but I still need to set this all into a nice bullet pointed list of goals. 
@@ -63,7 +63,7 @@ Anyway here is the list:
 
 * 12 dungeon levels
  * Generated with already existing dungeon generation code
- * Up and down stairs never generate next to eachother
+ * Up and down stairs never generate next to each other
 * Story fits on start screen
 * 12 unique enemy types
  * Unique means they visibly act differently
@@ -102,7 +102,7 @@ Sword and board - 120 X
 
 Weapon speed mod - -10 to 10
 
-2 weapon & sheild should balance
+2 weapon & shield should balance
 
 sword and board - the weapon has normal attack and what the shield does is cost a certain number of action points each time it blocks and can only block one attack at a time. 
 Chance to block goes down if also attacking at the same time. 
@@ -120,13 +120,13 @@ The shields mod adds 4% a point (+2 is 8%) with +10 max for 90%/65%.
 
 How should speed work? 
 Magical haste is simply half costs. 
-Maybe in percentanges? 
+Maybe in percentages? 
 Lower is better and strictly a percentage. 
 Basic is 100%. 
-Phsyical improvement or worsening of speed is additive so -5 to speed causes 95% and always stacks with itself to min of -30 and is added first. 
+Physical improvement or worsening of speed is additive so -5 to speed causes 95% and always stacks with itself to min of -30 and is added first. 
 ~~Static magical affects stacks with itself~~
 Static magical affects partially stacks. 
-It can't cause below -80 after phsyical is counted in. 
+It can't cause below -80 after physical is counted in. 
 The lowest is counted first and each successive gives a percentage which is equal to the current speed of the static magical. 
 
 ```
