@@ -86,9 +86,11 @@ Anyway here is the list:
 * Displaying it will be using Libtcod and not SDL
 * I will not be touching the dungeon generation code
 
-And that is the most I can plan out right now without getting to far into it. 
+&nbsp;&nbsp;&nbsp;And that is the most I can plan out right now without getting to far into it. 
 As a bit of a look into what I have been planning though below I will transcribe some of what I have about the time system. 
 Of course this is also partly so that its backed up and not stuck in a fragile paper form. 
+
+####My Notes
 
 Basic move - 100
 
