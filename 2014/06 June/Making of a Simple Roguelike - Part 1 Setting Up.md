@@ -28,6 +28,81 @@ My suggestion for a C++ roguelike tutorial using Libtcod is [here at Code::Umbra
 Now to get some basic things hashed out. 
 I looked into various ways of managing the game state and have decided I don't want any of the more complex stuff. 
 There will be a start/home screen, the ingame stuff, and a menu for saving and quiting. 
-They all stack one right on top of another and I will be dealing with this using nested whiles so lets get it into code and add some pseudocode mock up stuff. 
-The while logic is simple enough though flipped and just a bit of mock code to have some flavor and give future portents.
+They all stack one right on top of another and I will be dealing with this using some functions each with a while loop in it. 
+Mind you the proper way would be to make an actual game state manager but that can be put in later 
+(If you haven't been programming for long this is like saying I will clean my room tommorow. You almost never go back and do stuff you put off if it works.). 
+Anyway I want to do some coding so I am going to try and mock up what I want with this and put what I end up with below. 
+
+```C++
+#include "libtcod.hpp"
+int main() {
+    TCODConsole::initRoot(80,50,"Joining The Adventurers Guild",false);
+    return MainScreen();
+}
+
+int MainScreen() {
+    bool done = false;
+    while (!done) {
+        drawScreen(&mainscreen);
+        handleInput();
+        //MainScreen Logic
+        int gameoutput;
+        if (gamestart) {
+            gameoutput = GameScreen(randseed);
+        }
+        if (gameload) {
+            gameoutput = GameScreen(levelseed);
+        }
+        if (gameoutput > 0) {
+            setLoadSlot(gameoutput);
+        }
+        if (quit || gameoutput == -1) {
+            done = true;
+        }
+    }
+    return 1;
+}
+
+int GameScreen(int seed) {
+    bool ingame = true;
+    int gameoutput = 0;
+    while (ingame) {
+        drawScreen(&gamescreen);
+        handleInput();
+        //GameScreen Logic
+        int pauseoutput
+        if (paused) {
+            pauseoutput = PauseScreen(&gamescreen);
+        }
+        if (pauseoutput == 1) {
+            gameoutput = level;
+            ingame = false;
+        }
+        if (gameover || pauseoutput == -1) {
+            gameoutput = -1;
+            ingame = false;
+        }
+    }
+    return gameoutput;
+}
+
+int PauseScreen(/*some map or custom struct*/ &gamescreen) {
+    bool paused = true;
+    int pauseoutput = 0;
+    while (paused) {
+        drawScreen(&pausescreen);
+        handleInput();
+        //PauseScreen Logic
+        if (quitgame) {
+            pauseoutput = -1;
+            paused = false;
+        }
+        if (savegame) {
+            pauseoutput = 1;
+            paused = false;
+        }
+    }
+    return pauseoutput;
+}
+```
 
