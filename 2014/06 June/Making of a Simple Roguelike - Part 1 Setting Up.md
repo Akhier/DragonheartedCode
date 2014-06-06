@@ -106,3 +106,6 @@ int PauseScreen(/*some map or custom struct*/ &gamescreen) {
 }
 ```
 
+The above code wont work but it should show what I intend. 
+I am basically stacking the states one on top of another with the only complicated bit being going to the pause screen. 
+What is happening there is that I want the game screen to be in the background and maybe greyed out so I pass the current game screen to it. 
