@@ -21,5 +21,13 @@ Of course doing all this wont put anything on the screen and this isn't quite th
 If you want to take a look at it the first commit for [the project on github](https://github.com/Akhier/JoiningTheAdventurersGuild "The file tests not only opening a window but catching input") has the code. 
 With that I built and subsequently ran the project and everything worked. 
 Now if you had problems there are some really good tutorials so take a look around or you can ask on [the Libtcod forum](http://doryen.eptalys.net/forum/index.php?board=12.0 "Even if you don't want to post take a look there as if your having a problem someone else probably did too"). 
-My suggestion for a C++ tutorial is [here at Code::Umbra](http://codeumbra.eu/complete-roguelike-tutorial-using-c-and-libtcod-part-1-setting-up "It may or may not be a bit out of date, I hav eonly used bits and never actually fully followed it") 
+My suggestion for a C++ roguelike tutorial using Libtcod is [here at Code::Umbra](http://codeumbra.eu/complete-roguelike-tutorial-using-c-and-libtcod-part-1-setting-up "It may or may not be a bit out of date, I hav eonly used bits and never actually fully followed it") 
+
+###Foundations
+
+Now to get some basic things hashed out. 
+I looked into various ways of managing the game state and have decided I don't want any of the more complex stuff. 
+There will be a start/home screen, the ingame stuff, and a menu for saving and quiting. 
+They all stack one right on top of another and I will be dealing with this using nested whiles so lets get it into code and add some pseudocode mock up stuff. 
+The while logic is simple enough though flipped and just a bit of mock code to have some flavor and give future portents.
 
