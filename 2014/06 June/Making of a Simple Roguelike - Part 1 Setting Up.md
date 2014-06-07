@@ -35,11 +35,6 @@ Anyway I want to do some coding so I am going to try and mock up what I want wit
 
 ```C++
 #include "libtcod.hpp"
-int main() {
-    TCODConsole::initRoot(80,50,"Joining The Adventurers Guild",false);
-    return MainScreen();
-}
-
 int MainScreen() {
     bool done = false;
     while (!done) {
@@ -103,6 +98,11 @@ int PauseScreen(const /*some map or custom struct*/ &gamescreen) {
         }
     }
     return pauseoutput;
+}
+
+int main() {
+    TCODConsole::initRoot(80,50,"Joining The Adventurers Guild",false);
+    return MainScreen();
 }
 ```
 
