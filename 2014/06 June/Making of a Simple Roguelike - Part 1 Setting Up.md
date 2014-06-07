@@ -39,6 +39,7 @@ int MainScreen() {
     bool done = false;
     while (!done) {
         handleInput();
+        //MainScreen Logic
         int gameoutput;
         if (gamestart) {
             gameoutput = GameScreen(randseed);
@@ -52,7 +53,6 @@ int MainScreen() {
         if (quit || gameoutput == -1) {
             done = true;
         }
-        //MainScreen Logic
         drawScreen(&mainscreen);
     }
     return 1;
@@ -63,6 +63,7 @@ int GameScreen(int seed) {
     int gameoutput = 0;
     while (ingame) {
         handleInput();
+        //GameScreen Logic
         int pauseoutput
         if (paused) {
             pauseoutput = PauseScreen(&gamescreen);
@@ -75,7 +76,6 @@ int GameScreen(int seed) {
             gameoutput = -1;
             ingame = false;
         }
-        //GameScreen Logic
         drawScreen(&gamescreen);
     }
     return gameoutput;
@@ -86,6 +86,7 @@ int PauseScreen(const /*some map or custom struct*/ &gamescreen) {
     int pauseoutput = 0;
     while (paused) {
         handleInput();
+        //PauseScreen Logic
         if (quitgame) {
             pauseoutput = -1;
             paused = false;
@@ -94,7 +95,6 @@ int PauseScreen(const /*some map or custom struct*/ &gamescreen) {
             pauseoutput = 1;
             paused = false;
         }
-        //PauseScreen Logic
         drawScreen(&pausescreen);
     }
     return pauseoutput;
@@ -172,8 +172,8 @@ This means a struct which contains the character and the color as follows:
 
 ```C++
 struct Tile {
-    char Symbol = '.';
-    TCODColor foreColor = TCODColor.white;
+    char Symbol = ' ';
+    TCODColor foreColor = TCODColor.lightestGrey;
     TCODColor backColor = new TCODColor(15,15,15);
 };
 ```
@@ -181,4 +181,22 @@ struct Tile {
 Take note of the default backColor. 
 While not important programically it is for the color as a pure black can be to severe a contrast. 
 Now to decide how the screen data is stored. 
-Because the 
+Because the screen is always the same size I think a simple 2d array of Tiles.
+With this decided I can write the drawScreen function.
+
+```C++
+void drawScreen(const Tile screen[][WINDOW_HEIGHT]) {
+    TCODConsole::root->clear();
+    for (int column = 0; column < WINDOW_HEIGHT; ++column){
+        for (int row = 0; row < WINDOW_WIDTH; ++row){
+            TCODConsole::root->putCharEx(row, column, screen[row][column].Symbol, screen[row][column].foreColor, screen[row][column].backColor);
+        }
+    }
+    TCODConsole::flush();
+}
+```
+
+And with that and a couple of updates to the code all remaining errors end up being about things not existing which will be implemented in the logic. 
+I have some of the framework needed to get it running in some form. 
+About all I can see needing to have the basic startup screen working is said startup screen. 
+That will require what ends up being me just hardcoding the menu screens. 
