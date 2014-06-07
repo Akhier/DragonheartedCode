@@ -2,7 +2,7 @@
 
 &nbsp;&nbsp;&nbsp;As I noted in the planning post and in the heading just above here, I am going to use Libtcod for my roguelike. 
 If you don't know of Libtcod it is a free API for roguelike development and provides many useful things like advanced true color console and input. 
-Now we have that out of the way we need a project to work on and add it too. 
+Now that we have that out of the way we need a project to work on and add it too. 
 I start with a blank project called JoiningTheAdventurersGuild but if your following along you can call yours whatever you want.
 
 &nbsp;&nbsp;&nbsp;To get Libtcod up and running in our project we need to grab it first. 
@@ -16,7 +16,7 @@ In it there are a number of files but the ones we need to stick in our project f
 
 &nbsp;&nbsp;&nbsp;The png is very important as without it your program won't run. 
 I had a good bit of trouble when I was working with the C# binding of libtcod as it didn't have it include at the time for some reason. 
-The next step is to make sure the project knows what to do those files so into build options. 
+The next step is to make sure the project knows what to do with those files so into the build options. 
 Under debug in linker settings add a link to the libtcod\lib\libtcod-mingw-debug.a and then switch over to release and link to libtcod\lib\libtcod-mingw.a. 
 Of course doing all this wont put anything on the screen and this isn't quite the point to go into how to use libtcod so I will just note that I copied the main.cpp from my default setup of libtcod to test it. 
 If you want to take a look at it the first commit for [the project on github](https://github.com/Akhier/JoiningTheAdventurersGuild "The file tests not only opening a window but catching input") has the code. 
@@ -31,7 +31,7 @@ I looked into various ways of managing the game state and have decided I don't w
 There will be a start/home screen, the in-game stuff, and a menu for saving and quitting. 
 They all stack one right on top of another and I will be dealing with this using some functions each with a while loop in it. 
 Mind you the proper way would be to make an actual game state manager but that can be put in later 
-(If you haven't been programming for long this is like saying I will clean my room tomorrow. You almost never go back and do stuff you put off if what you have it works). 
+(If you haven't been programming for long this is like saying I will clean my room tomorrow. You almost never go back and do stuff you put off if what you have works). 
 Anyway I want to do some coding so I am going to try and mock up what I want with this and put what I end up with below. 
 
 ```C++
@@ -117,7 +117,7 @@ Anyway this was the easy setup bit, all the fun and hard stuff goes in those com
 Really when it comes down to it there is two control schemes only. 
 A menu control scheme and the ingame control scheme. 
 Since two of three are the menu version I can use a bool as the argument and the menu version will be true. 
-Also lets rename it to getInput as I have decided to have it just return an int depending on what key is pressed with any result that doesn't do anything returning -1. 
+Also lets rename it to getInput as I have decided to make it just return an int depending on what key is pressed and results that don't do something returning -1. 
 The actual function code will be a simple switch statement. 
 Code for both the change to the call and the implementation are just below. 
 
@@ -176,12 +176,12 @@ This means a struct which contains the character and the color as follows:
 struct Tile {
     char Symbol = ' ';
     TCODColor foreColor = TCODColor.lightestGrey;
-    TCODColor backColor = new TCODColor(15,15,15);
+    TCODColor backColor = TCODColor(15,15,15);
 };
 ```
 
 &nbsp;&nbsp;&nbsp;Take note of the default backColor. 
-While not important programmatically it is for the color as a pure black can be to severe a contrast. 
+While not important programmatically it is for the color scheme as a pure black can be too severe a contrast. 
 Now to decide how the screen data is stored. 
 Because the screen is always the same size I am thinking a simple 2d array of Tiles.
 With this decided I can write the drawScreen function.
@@ -200,13 +200,13 @@ void drawScreen(const Tile screen[][WINDOW_HEIGHT]) {
 
 &nbsp;&nbsp;&nbsp;And that along with a couple of updates to the code all the remaining errors end up being about things not existing. 
 More importantly those things don't exist because they are to be implemented in the logic. 
-I now have some of the framework needed to get it running in some form. 
+I now have most of the framework needed to get it running in some form. 
 About all I can see needing to have the basic start up screen working is said start up screen. 
 That will require what ends up being me just hardcoding the menu screens. 
 
 ####Small Addon
 
-&nbsp;&nbsp;&nbsp;As a bit of a fun addition I will layout how I plan to make dogs act. 
+&nbsp;&nbsp;&nbsp;As a bit of a fun in addition to the above I will layout how I plan to make dogs act. 
 They will be the new monster on the 4th dungeon level and represented by a brown 'd'.
 Anyway I figured out a simple state machine setup for them that will make them hunt in a pack or so I hope. 
 A dog will have three states depending on whether it can see other dogs or the player. 
@@ -265,7 +265,7 @@ All dogs that can see the player will try to be just as close to the player as a
 In the end no dog will actually try to attack the player directly but if the player approaches a dog they will all get closer. 
 I am basically trying to get the dogs to stay on the edge until the player either purposefully approaches them or ends up having to do so. 
 
-&nbsp;&nbsp;&nbsp;Really it will be a interesting choice for the player. 
+&nbsp;&nbsp;&nbsp;Really it will be an interesting choice for the player. 
 Do you deal with the dog now even though it will run away till it has a friend?
 How many do you let follow you before it is too many?
 And finally now that you let them follow you so far and you see a dog at the other end of the room how will you survive?
