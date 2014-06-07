@@ -109,4 +109,19 @@ int PauseScreen(const /*some map or custom struct*/ &gamescreen) {
 The above code wont work but it should show what I intend. 
 I am basically stacking the states one on top of another with the only complicated bit being going to the pause screen. 
 What is happening there is that I want the game screen to be in the background and maybe greyed out so I pass the current game screen to it. 
-It is being passed as a const because I don't want it to be changed and this enforces that.
+It is being passed as a const because I don't want it to be changed and this enforces that. 
+Anyway this was the easy setup bit, all the fun and hard stuff goes in those comments mentioning logic as well as whatever happens in handleInput. 
+
+Speaking of handleInput I have figured out how I want to do it. 
+Really when it comes down to it there is two control schemes only. 
+A menu control scheme and the ingame control scheme. 
+Since two of three are the menu version that will be true so I put it as the argument in the MainScreen and PauseScreen drawScreen call and false for GameScreen. 
+Also lets rename it to getInput as I have decided to have it just return an int depending on what key is pressed with any that don't do anything returning -1. 
+The actual function code will be a simple switch statement. 
+Code for both the change to the call and the implementation are just below. 
+
+```C++
+int inputcode = handleInput(true);
+```
+
+```C++
