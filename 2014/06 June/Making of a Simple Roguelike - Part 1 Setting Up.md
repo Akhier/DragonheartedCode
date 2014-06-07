@@ -38,9 +38,7 @@ Anyway I want to do some coding so I am going to try and mock up what I want wit
 int MainScreen() {
     bool done = false;
     while (!done) {
-        drawScreen(&mainscreen);
         handleInput();
-        //MainScreen Logic
         int gameoutput;
         if (gamestart) {
             gameoutput = GameScreen(randseed);
@@ -54,6 +52,8 @@ int MainScreen() {
         if (quit || gameoutput == -1) {
             done = true;
         }
+        //MainScreen Logic
+        drawScreen(&mainscreen);
     }
     return 1;
 }
@@ -62,9 +62,7 @@ int GameScreen(int seed) {
     bool ingame = true;
     int gameoutput = 0;
     while (ingame) {
-        drawScreen(&gamescreen);
         handleInput();
-        //GameScreen Logic
         int pauseoutput
         if (paused) {
             pauseoutput = PauseScreen(&gamescreen);
@@ -77,6 +75,8 @@ int GameScreen(int seed) {
             gameoutput = -1;
             ingame = false;
         }
+        //GameScreen Logic
+        drawScreen(&gamescreen);
     }
     return gameoutput;
 }
@@ -85,9 +85,7 @@ int PauseScreen(const /*some map or custom struct*/ &gamescreen) {
     bool paused = true;
     int pauseoutput = 0;
     while (paused) {
-        drawScreen(&pausescreen);
         handleInput();
-        //PauseScreen Logic
         if (quitgame) {
             pauseoutput = -1;
             paused = false;
@@ -96,6 +94,8 @@ int PauseScreen(const /*some map or custom struct*/ &gamescreen) {
             pauseoutput = 1;
             paused = false;
         }
+        //PauseScreen Logic
+        drawScreen(&pausescreen);
     }
     return pauseoutput;
 }
@@ -121,7 +121,64 @@ The actual function code will be a simple switch statement.
 Code for both the change to the call and the implementation are just below. 
 
 ```C++
-int inputcode = handleInput(true);
+int inputcode = getInput(true);
 ```
 
 ```C++
+int getInput(bool menuscheme) {
+    TCOD_key_t key = TCODConsole::checkForKeypress();
+    if (menuscheme){
+        if (key.vk == TCODK_ENTER || key.vk == TCODK_KPENTER) {
+            return 0;
+        }
+        else if (key.vk == TCODK_ESCAPE || TCODK_BACKSPACE) {
+            return 1;
+        }
+        else if (key.vk == TCODK_DOWN || key.vk == TCODK_KP2) {
+            return 2;
+        }
+        else if (key.vk == TCODK_UP || key.vk == TCODK_KP8) {
+            return 3;
+        }
+        else {
+            return -1;
+        }
+    }
+    else {
+        switch(key.vk) {
+            case TCODK_ESCAPE:
+                return 0;
+                break;
+            case TCODK_CHAR:
+                switch (key.c) {
+                    default:
+                        return -1;
+                        break;
+                }
+                break;
+            default:
+                return -1;
+                break;
+        }
+    }
+}
+```
+
+Do note that I have only filled out the menu keys and only put how to deal with characters and the escape key for the other scheme. 
+With that there I now need to figure out how I will handle what to draw. 
+It could be easy if I only wanted to use characters and everything was the same color. 
+That is not the case though as I want colored enemies. 
+This means a struct which contains the character and the color as follows:
+
+```C++
+struct Tile {
+    char Symbol = '.';
+    TCODColor foreColor = TCODColor.white;
+    TCODColor backColor = new TCODColor(15,15,15);
+};
+```
+
+Take note of the default backColor. 
+While not important programically it is for the color as a pure black can be to severe a contrast. 
+Now to decide how the screen data is stored. 
+Because the 
