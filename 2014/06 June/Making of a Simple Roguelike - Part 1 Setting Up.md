@@ -199,7 +199,7 @@ void drawScreen(const Tile screen[][WINDOW_HEIGHT]) {
 ```
 
 &nbsp;&nbsp;&nbsp;And that along with a couple of updates to the code all the remaining errors end up being about things not existing. 
-More importantly those things don't exist because they are to be implimented in the logic. 
+More importantly those things don't exist because they are to be implemented in the logic. 
 I now have some of the framework needed to get it running in some form. 
 About all I can see needing to have the basic start up screen working is said start up screen. 
 That will require what ends up being me just hardcoding the menu screens. 
@@ -262,7 +262,7 @@ If the dog is alone just wander or avoid the player but only just.
 When he finds another dog they will try to stay together but not too close. 
 Finally if a dog that is currently in a pack sees the player other dogs that can see it will go to it. 
 All dogs that can see the player will try to be just as close to the player as any other dog. 
-In the end no dog will actually try to attack the player directly but if the player approachs a dog they will all get closer. 
+In the end no dog will actually try to attack the player directly but if the player approaches a dog they will all get closer. 
 I am basically trying to get the dogs to stay on the edge until the player either purposefully approaches them or ends up having to do so. 
 
 &nbsp;&nbsp;&nbsp;Really it will be a interesting choice for the player. 
