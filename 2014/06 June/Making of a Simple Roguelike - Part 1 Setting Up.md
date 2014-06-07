@@ -200,3 +200,71 @@ And with that and a couple of updates to the code all remaining errors end up be
 I have some of the framework needed to get it running in some form. 
 About all I can see needing to have the basic startup screen working is said startup screen. 
 That will require what ends up being me just hardcoding the menu screens. 
+
+####Small addon
+
+As a bit of a fun addition I will layout how I plan to make dogs act. 
+They will be the new monster on the 4th dungeon level and represented by a brown 'd'.
+Anyway I figured out a simple state machine setup for them that will make them hunt in a pack potentially. 
+A dog will have three states depending on whether it can see other dogs or the player. 
+The first is alone and would be something like the following:
+
+```
+If see_player
+   move_away
+Else If saw_player
+   reverse_of_last_move
+Else
+   rand_walk
+If see_dog
+   leave alone enter inpack
+```
+
+Next as you might intuite will be the state of being in a pack which is called inpack
+
+```
+If see_player
+   leave inpack enter hunting
+If see_hunting_dog
+   move_closer
+else
+   If distance_to_nearest_dog < 3
+      move_away
+   If !_see_dog
+      leave inpack enter alone
+   If distance_to_nearest_dog > 6
+      move_closer
+   else
+      rand_walk
+```
+
+Next of course is the final state called hunting
+
+```
+If next_to_player
+   attack_player
+Else If see_player
+   If other_dog_closer_to_player
+      move_closer
+   Else
+      keep_distance_but_move
+If saw_player
+   move_towards_player
+Else
+   leave hunting enter alone
+```
+
+And with that I hope to make an interesting pack hunt. 
+If the dog is alone just wander or avoid the player but just. 
+When he finds another dog they will try to stay together but not too close. 
+Finally if a dog that is currently in a pack sees the player other dogs that can see it will go to it. 
+All dogs that can see the player will try to be just as close to the player as any other dog. 
+In the end no dog will actually try to attack the player directly but if the player approuchs a dog they will all get closer. 
+I am basically trying to get the dogs to stay on the edge until the player either purposefully approuches them or ends up having to do so. 
+
+Really it will be a interesting choice for the player. 
+Do you deal with the dog now even though it will run away till it has a friend?
+How many do you let follow you before it is too many?
+And finally now that you let them follow you so far and you see a dog at the other end of the room how will you survive?
+
+At least that is my hope for them
