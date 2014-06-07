@@ -21,16 +21,16 @@ Of course doing all this wont put anything on the screen and this isn't quite th
 If you want to take a look at it the first commit for [the project on github](https://github.com/Akhier/JoiningTheAdventurersGuild "The file tests not only opening a window but catching input") has the code. 
 With that I built and subsequently ran the project and everything worked. 
 Now if you had problems there are some really good tutorials so take a look around or you can ask on [the Libtcod forum](http://doryen.eptalys.net/forum/index.php?board=12.0 "Even if you don't want to post take a look there as if your having a problem someone else probably did too"). 
-My suggestion for a C++ roguelike tutorial using Libtcod is [here at Code::Umbra](http://codeumbra.eu/complete-roguelike-tutorial-using-c-and-libtcod-part-1-setting-up "It may or may not be a bit out of date, I hav eonly used bits and never actually fully followed it") 
+My suggestion for a C++ roguelike tutorial using Libtcod is [here at Code::Umbra](http://codeumbra.eu/complete-roguelike-tutorial-using-c-and-libtcod-part-1-setting-up "It may or may not be a bit out of date, I have only used bits and never actually fully followed it") 
 
 ###Foundations
 
 Now to get some basic things hashed out. 
 I looked into various ways of managing the game state and have decided I don't want any of the more complex stuff. 
-There will be a start/home screen, the ingame stuff, and a menu for saving and quiting. 
+There will be a start/home screen, the in-game stuff, and a menu for saving and quitting. 
 They all stack one right on top of another and I will be dealing with this using some functions each with a while loop in it. 
 Mind you the proper way would be to make an actual game state manager but that can be put in later 
-(If you haven't been programming for long this is like saying I will clean my room tommorow. You almost never go back and do stuff you put off if it works.). 
+(If you haven't been programming for long this is like saying I will clean my room tomorrow. You almost never go back and do stuff you put off if it works.). 
 Anyway I want to do some coding so I am going to try and mock up what I want with this and put what I end up with below. 
 
 ```C++
@@ -108,7 +108,7 @@ int main() {
 
 The above code wont work but it should show what I intend. 
 I am basically stacking the states one on top of another with the only complicated bit being going to the pause screen. 
-What is happening there is that I want the game screen to be in the background and maybe greyed out so I pass the current game screen to it. 
+What is happening there is that I want the game screen to be in the background and maybe grayed out so I pass the current game screen to it. 
 It is being passed as a const because I don't want it to be changed and this enforces that. 
 Anyway this was the easy setup bit, all the fun and hard stuff goes in those comments mentioning logic as well as whatever happens in handleInput. 
 
@@ -179,7 +179,7 @@ struct Tile {
 ```
 
 Take note of the default backColor. 
-While not important programically it is for the color as a pure black can be to severe a contrast. 
+While not important programmatically it is for the color as a pure black can be to severe a contrast. 
 Now to decide how the screen data is stored. 
 Because the screen is always the same size I think a simple 2d array of Tiles.
 With this decided I can write the drawScreen function.
@@ -198,7 +198,7 @@ void drawScreen(const Tile screen[][WINDOW_HEIGHT]) {
 
 And with that and a couple of updates to the code all remaining errors end up being about things not existing which will be implemented in the logic. 
 I have some of the framework needed to get it running in some form. 
-About all I can see needing to have the basic startup screen working is said startup screen. 
+About all I can see needing to have the basic start up screen working is said start up screen. 
 That will require what ends up being me just hardcoding the menu screens. 
 
 ####Small addon
@@ -220,7 +220,7 @@ If see_dog
    leave alone enter inpack
 ```
 
-Next as you might intuite will be the state of being in a pack which is called inpack
+Next as you might intuit will be the state of being in a pack which is called inpack
 
 ```
 If see_player
@@ -259,8 +259,8 @@ If the dog is alone just wander or avoid the player but just.
 When he finds another dog they will try to stay together but not too close. 
 Finally if a dog that is currently in a pack sees the player other dogs that can see it will go to it. 
 All dogs that can see the player will try to be just as close to the player as any other dog. 
-In the end no dog will actually try to attack the player directly but if the player approuchs a dog they will all get closer. 
-I am basically trying to get the dogs to stay on the edge until the player either purposefully approuches them or ends up having to do so. 
+In the end no dog will actually try to attack the player directly but if the player approachs a dog they will all get closer. 
+I am basically trying to get the dogs to stay on the edge until the player either purposefully approaches them or ends up having to do so. 
 
 Really it will be a interesting choice for the player. 
 Do you deal with the dog now even though it will run away till it has a friend?
