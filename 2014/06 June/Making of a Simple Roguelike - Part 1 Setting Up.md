@@ -208,9 +208,9 @@ That will require what ends up being me just hardcoding the menu screens.
 
 &nbsp;&nbsp;&nbsp;As a bit of a fun addition I will layout how I plan to make dogs act. 
 They will be the new monster on the 4th dungeon level and represented by a brown 'd'.
-Anyway I figured out a simple state machine setup for them that will make them hunt in a pack potentially. 
+Anyway I figured out a simple state machine setup for them that will make them hunt in a pack or so I hope. 
 A dog will have three states depending on whether it can see other dogs or the player. 
-The first is alone and would be something like the following:
+The one they start in is alone and would be something like the following:
 
 ```
 If see_player
@@ -223,7 +223,7 @@ If see_dog
    leave alone enter inpack
 ```
 
-Next as you might intuit will be the state of being in a pack which is called inpack
+Next as you might intuit from the above will be the state of inpack
 
 ```
 If see_player
@@ -241,7 +241,7 @@ else
       rand_walk
 ```
 
-Next of course is the final state called hunting
+Finally of course is the state called hunting
 
 ```
 If next_to_player
@@ -257,8 +257,8 @@ Else
    leave hunting enter alone
 ```
 
-&nbsp;&nbsp;&nbsp;And with that I hope to make an interesting pack hunt. 
-If the dog is alone just wander or avoid the player but just. 
+&nbsp;&nbsp;&nbsp;And with that I hope to make an interesting pack behavior. 
+If the dog is alone just wander or avoid the player but only just. 
 When he finds another dog they will try to stay together but not too close. 
 Finally if a dog that is currently in a pack sees the player other dogs that can see it will go to it. 
 All dogs that can see the player will try to be just as close to the player as any other dog. 
