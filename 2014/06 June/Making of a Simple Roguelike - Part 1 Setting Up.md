@@ -1,6 +1,7 @@
 ###So Libtcod
-&nbsp;&nbsp;&nbsp;As I noted in the planning post and the heading just above here I am going to use Libtcod for my roguelike. 
-If you don't know of Libtcod it is a free API for roguelike development which provides many useful things like advanced true color console and input. 
+
+&nbsp;&nbsp;&nbsp;As I noted in the planning post and in the heading just above here, I am going to use Libtcod for my roguelike. 
+If you don't know of Libtcod it is a free API for roguelike development and provides many useful things like advanced true color console and input. 
 Now we have that out of the way we need a project to work on and add it too. 
 I start with a blank project called JoiningTheAdventurersGuild but if your following along you can call yours whatever you want.
 
@@ -14,9 +15,9 @@ In it there are a number of files but the ones we need to stick in our project f
 * terminal.png
 
 &nbsp;&nbsp;&nbsp;The png is very important as without it your program won't run. 
-I had a good bit of trouble when I was working with the C# binding of libtcod as it didn't have it include for some reason. 
-Anyway with that the next step is to make sure the project knows what to do with it all so into build options. 
-Under debug in linker settings add a link to the libtcod\lib\libtcod-mingw-debug.a and then switch over to release and link to libtcod\lib\libtcod-mingw.a and we are good. 
+I had a good bit of trouble when I was working with the C# binding of libtcod as it didn't have it include at the time for some reason. 
+The next step is to make sure the project knows what to do those files so into build options. 
+Under debug in linker settings add a link to the libtcod\lib\libtcod-mingw-debug.a and then switch over to release and link to libtcod\lib\libtcod-mingw.a. 
 Of course doing all this wont put anything on the screen and this isn't quite the point to go into how to use libtcod so I will just note that I copied the main.cpp from my default setup of libtcod to test it. 
 If you want to take a look at it the first commit for [the project on github](https://github.com/Akhier/JoiningTheAdventurersGuild "The file tests not only opening a window but catching input") has the code. 
 With that I built and subsequently ran the project and everything worked. 
