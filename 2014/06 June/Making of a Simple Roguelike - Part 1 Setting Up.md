@@ -31,7 +31,7 @@ I looked into various ways of managing the game state and have decided I don't w
 There will be a start/home screen, the in-game stuff, and a menu for saving and quitting. 
 They all stack one right on top of another and I will be dealing with this using some functions each with a while loop in it. 
 Mind you the proper way would be to make an actual game state manager but that can be put in later 
-(If you haven't been programming for long this is like saying I will clean my room tomorrow. You almost never go back and do stuff you put off if it works.). 
+(If you haven't been programming for long this is like saying I will clean my room tomorrow. You almost never go back and do stuff you put off if what you have it works). 
 Anyway I want to do some coding so I am going to try and mock up what I want with this and put what I end up with below. 
 
 ```C++
@@ -82,7 +82,7 @@ int GameScreen(int seed) {
     return gameoutput;
 }
 
-int PauseScreen(const /*some map or custom struct*/ &gamescreen) {
+int PauseScreen(const /*some map or custom struct array*/ &gamescreen) {
     bool paused = true;
     int pauseoutput = 0;
     while (paused) {
@@ -111,13 +111,13 @@ int main() {
 I am basically stacking the states one on top of another with the only complicated bit being going to the pause screen. 
 What is happening there is that I want the game screen to be in the background and maybe grayed out so I pass the current game screen to it. 
 It is being passed as a const because I don't want it to be changed and this enforces that. 
-Anyway this was the easy setup bit, all the fun and hard stuff goes in those comments mentioning logic as well as whatever happens in handleInput. 
+Anyway this was the easy setup bit, all the fun and hard stuff goes in those comments mentioning logic and possibly whatever happens in handleInput. 
 
 &nbsp;&nbsp;&nbsp;Speaking of handleInput I have figured out how I want to do it. 
 Really when it comes down to it there is two control schemes only. 
 A menu control scheme and the ingame control scheme. 
-Since two of three are the menu version that will be true so I put it as the argument in the MainScreen and PauseScreen drawScreen call and false for GameScreen. 
-Also lets rename it to getInput as I have decided to have it just return an int depending on what key is pressed with any that don't do anything returning -1. 
+Since two of three are the menu version I can use a bool as the argument and the menu version will be true. 
+Also lets rename it to getInput as I have decided to have it just return an int depending on what key is pressed with any result that doesn't do anything returning -1. 
 The actual function code will be a simple switch statement. 
 Code for both the change to the call and the implementation are just below. 
 
@@ -165,8 +165,9 @@ int getInput(bool menuscheme) {
 }
 ```
 
-&nbsp;&nbsp;&nbsp;Do note that I have only filled out the menu keys and only put how to deal with characters and the escape key for the other scheme. 
-With that there I now need to figure out how I will handle what to draw. 
+&nbsp;&nbsp;&nbsp;Do note that I have only filled out the menu keys. 
+I only put how to deal with characters and the escape key in the game keys as I wanted to show how to do it. 
+With that in place I now need to figure out how I will handle what to draw. 
 It could be easy if I only wanted to use characters and everything was the same color. 
 That is not the case though as I want colored enemies. 
 This means a struct which contains the character and the color as follows:
@@ -182,7 +183,7 @@ struct Tile {
 &nbsp;&nbsp;&nbsp;Take note of the default backColor. 
 While not important programmatically it is for the color as a pure black can be to severe a contrast. 
 Now to decide how the screen data is stored. 
-Because the screen is always the same size I think a simple 2d array of Tiles.
+Because the screen is always the same size I am thinking a simple 2d array of Tiles.
 With this decided I can write the drawScreen function.
 
 ```C++
@@ -197,12 +198,13 @@ void drawScreen(const Tile screen[][WINDOW_HEIGHT]) {
 }
 ```
 
-&nbsp;&nbsp;&nbsp;And with that and a couple of updates to the code all remaining errors end up being about things not existing which will be implemented in the logic. 
-I have some of the framework needed to get it running in some form. 
+&nbsp;&nbsp;&nbsp;And that along with a couple of updates to the code all the remaining errors end up being about things not existing. 
+More importantly those things don't exist because they are to be implimented in the logic. 
+I now have some of the framework needed to get it running in some form. 
 About all I can see needing to have the basic start up screen working is said start up screen. 
 That will require what ends up being me just hardcoding the menu screens. 
 
-####Small addon
+####Small Addon
 
 &nbsp;&nbsp;&nbsp;As a bit of a fun addition I will layout how I plan to make dogs act. 
 They will be the new monster on the 4th dungeon level and represented by a brown 'd'.
