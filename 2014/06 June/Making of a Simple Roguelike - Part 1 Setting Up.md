@@ -1,10 +1,10 @@
 ###So Libtcod
-As I noted in the planning post and the heading just above here I am going to use Libtcod for my roguelike. 
+&nbsp;&nbsp;&nbsp;As I noted in the planning post and the heading just above here I am going to use Libtcod for my roguelike. 
 If you don't know of Libtcod it is a free API for roguelike development which provides many useful things like advanced true color console and input. 
 Now we have that out of the way we need a project to work on and add it too. 
 I start with a blank project called JoiningTheAdventurersGuild but if your following along you can call yours whatever you want.
 
-To get Libtcod up and running in our project we need to grab it first. 
+&nbsp;&nbsp;&nbsp;To get Libtcod up and running in our project we need to grab it first. 
 I am using [the 1.5.2 Windows version](http://doryen.eptalys.net/libtcod/download/ "There are a number of options for other languages there as well") to do this. 
 In it there are a number of files but the ones we need to stick in our project folder are as follows:
 
@@ -13,7 +13,7 @@ In it there are a number of files but the ones we need to stick in our project f
 * SDL.dll
 * terminal.png
 
-The png is very important as without it your program won't run. 
+&nbsp;&nbsp;&nbsp;The png is very important as without it your program won't run. 
 I had a good bit of trouble when I was working with the C# binding of libtcod as it didn't have it include for some reason. 
 Anyway with that the next step is to make sure the project knows what to do with it all so into build options. 
 Under debug in linker settings add a link to the libtcod\lib\libtcod-mingw-debug.a and then switch over to release and link to libtcod\lib\libtcod-mingw.a and we are good. 
@@ -25,7 +25,7 @@ My suggestion for a C++ roguelike tutorial using Libtcod is [here at Code::Umbra
 
 ###Foundations
 
-Now to get some basic things hashed out. 
+&nbsp;&nbsp;&nbsp;Now to get some basic things hashed out. 
 I looked into various ways of managing the game state and have decided I don't want any of the more complex stuff. 
 There will be a start/home screen, the in-game stuff, and a menu for saving and quitting. 
 They all stack one right on top of another and I will be dealing with this using some functions each with a while loop in it. 
@@ -106,13 +106,13 @@ int main() {
 }
 ```
 
-The above code wont work but it should show what I intend. 
+&nbsp;&nbsp;&nbsp;The above code wont work but it should show what I intend. 
 I am basically stacking the states one on top of another with the only complicated bit being going to the pause screen. 
 What is happening there is that I want the game screen to be in the background and maybe grayed out so I pass the current game screen to it. 
 It is being passed as a const because I don't want it to be changed and this enforces that. 
 Anyway this was the easy setup bit, all the fun and hard stuff goes in those comments mentioning logic as well as whatever happens in handleInput. 
 
-Speaking of handleInput I have figured out how I want to do it. 
+&nbsp;&nbsp;&nbsp;Speaking of handleInput I have figured out how I want to do it. 
 Really when it comes down to it there is two control schemes only. 
 A menu control scheme and the ingame control scheme. 
 Since two of three are the menu version that will be true so I put it as the argument in the MainScreen and PauseScreen drawScreen call and false for GameScreen. 
@@ -164,7 +164,7 @@ int getInput(bool menuscheme) {
 }
 ```
 
-Do note that I have only filled out the menu keys and only put how to deal with characters and the escape key for the other scheme. 
+&nbsp;&nbsp;&nbsp;Do note that I have only filled out the menu keys and only put how to deal with characters and the escape key for the other scheme. 
 With that there I now need to figure out how I will handle what to draw. 
 It could be easy if I only wanted to use characters and everything was the same color. 
 That is not the case though as I want colored enemies. 
@@ -178,7 +178,7 @@ struct Tile {
 };
 ```
 
-Take note of the default backColor. 
+&nbsp;&nbsp;&nbsp;Take note of the default backColor. 
 While not important programmatically it is for the color as a pure black can be to severe a contrast. 
 Now to decide how the screen data is stored. 
 Because the screen is always the same size I think a simple 2d array of Tiles.
@@ -196,14 +196,14 @@ void drawScreen(const Tile screen[][WINDOW_HEIGHT]) {
 }
 ```
 
-And with that and a couple of updates to the code all remaining errors end up being about things not existing which will be implemented in the logic. 
+&nbsp;&nbsp;&nbsp;And with that and a couple of updates to the code all remaining errors end up being about things not existing which will be implemented in the logic. 
 I have some of the framework needed to get it running in some form. 
 About all I can see needing to have the basic start up screen working is said start up screen. 
 That will require what ends up being me just hardcoding the menu screens. 
 
 ####Small addon
 
-As a bit of a fun addition I will layout how I plan to make dogs act. 
+&nbsp;&nbsp;&nbsp;As a bit of a fun addition I will layout how I plan to make dogs act. 
 They will be the new monster on the 4th dungeon level and represented by a brown 'd'.
 Anyway I figured out a simple state machine setup for them that will make them hunt in a pack potentially. 
 A dog will have three states depending on whether it can see other dogs or the player. 
@@ -254,7 +254,7 @@ Else
    leave hunting enter alone
 ```
 
-And with that I hope to make an interesting pack hunt. 
+&nbsp;&nbsp;&nbsp;And with that I hope to make an interesting pack hunt. 
 If the dog is alone just wander or avoid the player but just. 
 When he finds another dog they will try to stay together but not too close. 
 Finally if a dog that is currently in a pack sees the player other dogs that can see it will go to it. 
@@ -262,7 +262,7 @@ All dogs that can see the player will try to be just as close to the player as a
 In the end no dog will actually try to attack the player directly but if the player approachs a dog they will all get closer. 
 I am basically trying to get the dogs to stay on the edge until the player either purposefully approaches them or ends up having to do so. 
 
-Really it will be a interesting choice for the player. 
+&nbsp;&nbsp;&nbsp;Really it will be a interesting choice for the player. 
 Do you deal with the dog now even though it will run away till it has a friend?
 How many do you let follow you before it is too many?
 And finally now that you let them follow you so far and you see a dog at the other end of the room how will you survive?
