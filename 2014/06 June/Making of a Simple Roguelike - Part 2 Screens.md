@@ -112,3 +112,15 @@ Start up and what does the screen you see look like?
  +----------------------------------------------------------------------------+ 
                                                                                 
 ```
+
+Once again I am dealing with too much space. 
+Anyway it doesn't look too bad. 
+In game there will be a frame around whichever option is selected at the moment. 
+But all that aside we now have all the screens we need. 
+Yes there is a pause screen but I am going to take a shortcut with that. 
+Libtcod can make a frame which overwrites what it is drawn over so I will simply be drawing that and then the options. 
+
+With that out of the way though I now have to put it into the code. 
+I am thinking a simple class that just has getStartScreen and getGameScreen which takes the argument of a char**.
+It will actually be somewhat easier then it could be because we are using a char array. 
+Instead of having to go {{' ',' '},{' ',' '}} for the whole thing I can just {"  ", "  "}
